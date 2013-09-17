@@ -1,0 +1,19 @@
+*.iml
+.idea
+*.pyc
+*~
+#PyDev
+.project
+.pydevproject
+# virtualenv
+bin/
+include/
+lib/
+Scripts/
+Include/
+Lib/
+local/
+
+# python3
+__pycache__
+
