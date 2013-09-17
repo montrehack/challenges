@@ -1,0 +1,58 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>{{ level }}: Reset Your Password</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="../static/css/bootstrap.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="../static/css/reset.css" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="../static/js/html5shiv.js"></script>
+      <script src="../static/js/respond.min.js"></script>
+    <![endif]-->
+  </head>
+
+  <body>
+    <div id="wrap">
+        <div class="container">
+
+            <form class="form-signin" method="POST">
+                <h2>{{ level }}</h2>
+                <h3 class="form-signin-heading">Please enter your e-mail</h3>
+                <input name="email" type="text" class="form-control" placeholder="Email address" autofocus>
+                {% raw xsrf_form_html() %}
+                <button class="btn btn-lg btn-primary btn-block" type="submit">Reset My Password</button>
+            </form>
+
+            <br/>
+            <br/>
+
+            <div style="text-align: center">
+                <h6>note: the admin e-mail is always admin@montrehack.ca</h6>
+            </div>
+
+            <div id="push"></div>
+        </div> <!-- /container -->
+    </div>
+
+    {% if show_code %}
+        <div class="footer">
+            <h6 style="text-align: center">Allright, let me cheat a bit, show me the <a href="?code=true">code</a></h6>
+        </div>
+    {% end %}
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+  </body>
+</html>
