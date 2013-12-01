@@ -1,0 +1,12 @@
+
+== Requirements
+
+* Linux 64bit (exploitme)
+* PHP >= 5.4 (for php embedded web-server)
+* a working setup MySQL
+
+You need php version >= 5.4
+
+$ php -S localhost:8000
+
+Open your browser on localhost:8000

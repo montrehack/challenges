@@ -1,0 +1,20 @@
+char *response = NULL;
+                                    char *cleanBuffer = NULL;
+                                    response = (char*)malloc(2048);
+                                    memset(response, 0, 2048);
+                                    cleanBuffer = (char*)malloc(strlen(buf));
+                                    memset(cleanBuffer, 0, strlen(buf));
+                                    strncpy(cleanBuffer, buf, strlen(buf) - 1);
+                                    char flag[] = "XXXXXXXXXXXXXXXXXXXXXXXXXX";
+                                    if(strcmp(flag, cleanBuffer) == 0) {
+                                        //exit = 1;
+                                        strcpy(response, "Here's your flag XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX.\n");
+                                    } else {
+                                        sprintf(response, cleanBuffer);
+                                        sprintf(response, "%s is a wrong password.\n\nPassword:", response);
+                                    }
+
+                                    if(send(j, response, 2048, 0) == -1) {
+                                        perror("send");
+                                    }
+
