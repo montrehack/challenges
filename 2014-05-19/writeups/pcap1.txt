@@ -1,0 +1,123 @@
+1 - Open with wireshark, isolate icmpv6 echo requests (icmpv6.type == 128), save displayed packets to requests.pcap
+2 - Extract data bytes with tshark
+
+tshark -T fields -e data -r requests.pcap  > dump
+
+3 - Data bytes saved this way are actually ascii representation of a base64 encoded truncated pdf file which contains the flag.  Therefore, further processing is required.
+
+4 - Read, unhexlify, then base64 decode your dump file obtained from tshark , save the result as broken.pdf.  I did it using python:
+
+import binascii
+import base64
+
+dump = open('dump', 'r')
+buf=''
+for line in dump.readlines():
+    buf = buf + binascii.unhexlify(line.strip())
+    
+
+pdf = open('broken.pdf', 'w')
+pdf.write(base64.decodestring(buf))
+dump.close()
+pdf.close()
+
+
+5 - I am unaware of any pdf reader that will display the resulting pdf file or any software that could fix it to make it readable.  There are two ways that i can imagine to get this flag:  extract zlib encoded streams and read the flag from them or manually fix the pdf so it would be readable.  I chose to fix the pdf.  To do so, have a python shell, an  hex editor, a text editor and another working pdf file handy.  I used rao2.pdf as a working pdf file.  I obtained rao2.pdf from firefox print to pdf function to print a single page website ( Rao 2 challenge )
+
+5a) Quick intro to pdf files (as i figured them out).  A pdf file is made of the following:
+
+- A pdf header, the two first lines
+- Objects identified by a unique number.  ID is sequential, starting from one (as i figured them out).  These objects either contains actual data or tell the reader how to display that data.
+- Cross reference table, aka xref stable.  The xref table is located near the end of the file and contains a table of all objects of the pdf file and their offset in decimal.
+- A trailer section, right after the xref table.  Contains the number of objects and ID of the Root object, which shall be read first.
+- Footer: Last 3 lines of a pdf file contain the offset of the xref table in fileas follows:
+
+startxref
+offset of xref in decimal
+%%EOF
+
+If either the offset of the xref table or the offset on any objects in it is wrong, pdf loading will fail.  That is why we need an hex editor.
+
+5b) Get the header of another good pdf file, concatenate your broken file on top of these headers.  From now on we will be using rao2.pdf as a reference to patch output.pdf to a readable state.  Successfully reading output.pdf will get us the flag.
+
+head -2 rao2.pdf > output.pdf
+cat broken.pdf >> output.pdf
+
+5c) Take away the broken annotation section, save it in another file, the links might be useful
+
+5d) Copy the /Catalog object from rao2.pdf and paste it at line 3 of output.pdf.  Set object id to 2 as referenced by the trailer section.  Set ID of referenced /Pages object to 1.  The /Pages (table of contents?) already exists in output.pdf as object id 1. 
+
+Should look like this:
+
+2 0 obj 
+<< /Type /Catalog
+   /Pages 1 0 R
+>>
+endobj
+
+5e) Create a /Page object as id 3, Set the following:
+Parent = 1 0 R
+Contents = 6 0 R
+Resources 11 0 R
+
+Should look like this:
+
+3 0 obj
+<< /Type /Page
+   /Parent 1 0 R
+   /MediaBox [ 0 0 612 792 ]
+   /Contents 6 0 R
+   /Group <<
+      /Type /Group
+      /S /Transparency
+      /CS /DeviceRGB
+   >>
+   /Resources 11 0 R
+>>
+endobj
+
+5g) Create a ExtGState object as id 11. /Font should point to Font object ( ID 5)
+Set the following:
+
+/F0 5 0 R (We get F0 from error messages about missing F0 font or 
+postscript file that is zlib compressed in object id 6)
+
+Should look like this
+
+11 0 obj
+<<
+   /ExtGState <<
+      /a0 << /CA 1 /ca 1 >>
+   >>  
+   /Font <<
+      /F0 5 0 R
+   >>  
+>>
+endobj
+
+5h) Create an Info object which won't actually be use except for padding.
+
+Should look like this for now, we will pad by adding bytes to /Author field later:
+12 0 obj
+<< /Creator (cairo 1.9.5 (http://cairographics.org))
+   /Producer (cairo 1.9.5 (http://cairographics.org))
+   /Author ()
+>>
+endobj
+
+5i) Fix offset of object id 3 in xref table.  Was 63, should be 68.
+
+5j) Add object 11 and 12  to xref table.  Bump number of objects in both trailer section and xref table from 11 to 13.  Get offset of these objects and set it in xref table.  Should be 272 for object 11 and . 
+
+5k) Make sure object id 6 is really at offset 1060, likely not the case.  Figure out the difference and pad /Author accordingly to realign object 6, thus the rest of the file including the xref table itself.
+
+In this case difference is 1060-522=538
+
+From python, print "A"*538, copy paste the results in Author
+
+5l) Double check offsets of object id 6 and xref table. Should be:
+
+1060 for object 6
+25620 for xref table
+
+5m) Try to open output.pdf, you should be at long last rewarded with a flag

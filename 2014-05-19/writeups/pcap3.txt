@@ -1,0 +1,77 @@
+1 - Decrypt private key from cfx bundle.  
+
+openssl pkcs12 -in cert.pfx -nodes -out pcap3.pem
+
+2 - In wireshark, in protocol/ssl, configure ssl by adding your decrypted key::
+
+IP Address: 10.153.108.140
+Port:       3389
+Protocol:   tpkt
+Key file:   pcap3.pem (must be exported private key file in step 1)
+
+3 - Look for tlsv1 packets, expand, click on Secure Socket Layer, right click and select follow ssl stream.  
+
+Note: Step 3 worked for me with wireshark 1.10.2 (kali) but not with wireshark 1.8.2 (debian wheezy)
+
+4 - Follow ssl stream will open a new window.  Then, select packets from client to server and select hex dump format.  Export result to pcap3.keystrokes.
+
+5 - In your pcap3.keytrokes files, you will be looking for lines like these:
+
+000006CB  44 04 00 32                                      D..2 
+
+000006CF  44 04 01 32                                      D..2 
+
+Format goes like this:
+
+44 04: Client is sending a keyboard related event
+
+00 | 01: Third bytes set to 0 means key is pressed, set to 1 means key is released.  
+
+Last byte is the scan code.  I've made a table which links scan codes to ascii caracters or known name of key (esc, enter, shift, ctrl, etc).  I used that table along with a python script to figure out key pressed by user during that rdp session.
+
+https://labs.portcullis.co.uk/blog/retrospective-decryption-of-ssl-encrypted-rdp-sessions/
+
+Scan codes maps are to be found here
+http://msdn.microsoft.com/en-us/en%20us/library/aa299374%28v=vs.60%29.aspx
+
+6 - I came up with the following python script to translate the scan codes from the hex dump we got from wireshark using the scancode table created in step 5
+
+#!/usr/bin/env python
+import collections
+
+keys={}
+def loadkscan(keys):
+  """ load keyboard scancodes table from scancodes.csv """
+  kscan=open('scancodes.csv', 'r')
+  for line in kscan:
+    key=line.split(',')
+    keys[key[0]]=key[1:2]
+  kscan.close()
+
+loadkscan(keys)
+
+keystrokes={}
+pcap=open('pcap3.keystrokes','r')
+for line in pcap:
+  keystroke=line.split(' ')
+  if (len(keystroke) >= 6): 
+    if (int(keystroke[2] + keystroke[3],16) == 0x4404):
+      keystrokes[keystroke[0]]=keystroke[4:6]
+    
+
+
+pcap.close()
+
+odks=collections.OrderedDict(sorted(keystrokes.items()))
+
+f=open('flag3.txt','w')
+for k,v in odks.iteritems():
+    if (int(v[0],10) % 2 == 0):
+        f.write(str(keys[hex(int(v[1],16))])+"\n")
+        
+    
+f.close()
+
+7 - Open flag3.txt.  The flag is the inventor of Konami code, which should be Kazuhisa Hashimoto. Done!
+
+
