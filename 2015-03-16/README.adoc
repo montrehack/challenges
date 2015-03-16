@@ -1,0 +1,6 @@
+= password-checker
+
+An Advent calendar CTF challenge: http://adctf2014.katsudon.org/
+
+The original binary is at
+http://adctf2014.katsudon.org/dat/AkgyBathNidfcvKa/password-checker.xz
