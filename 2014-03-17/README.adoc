@@ -1,0 +1,7 @@
+= bkp reversing
+
+A Boston Key Party CTF challenge: http://bostonkey.party/
+
+The original files are at:
+* https://github.com/ctfs/write-ups-2014/raw/master/boston-key-party-2014/other/sketchy/sketchy.pcap
+* https://github.com/ctfs/write-ups-2014/raw/master/boston-key-party-2014/pwning/risc_emu/emu-c7c4671145c5bb6ad48682ec0c58b831
