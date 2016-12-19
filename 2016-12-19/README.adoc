@@ -1,0 +1,24 @@
+= README
+
+== Malicious files
+
+WARNING: The Zip file contains actual unmodified malware. Do not open on a
+         Windows workstation with Office installed and macros activated.
+
+Archive password: e3309fd69f15827fe5ed4acc01103049
+
+== Level 1
+
+* Is it malicious or clean?
+* What is it doing?
+* Extract the malicious URL for the stager?
+* Is it still active?
+* Is it a targeted attack?
+
+== Level 2
+
+* Is it malicious or clean?
+* What is it doing?
+* What is the technique used by the stager?
+* Is it a targeted attack?
+* What malware family is this?
