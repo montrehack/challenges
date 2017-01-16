@@ -1,0 +1,12 @@
+= README
+
+== Malicious Network Traffic
+
+You are an incident responder, you receive a Pcap from Operations saying that
+this traffic was obtained from a C-level executive laptop. The executive is
+about to leave for the day. Do you allow him to leave with his laptop or not?
+
+For all level zip files:
+
+* Is the affected computer infected or clean?
+* If it is infected what is the malware family?
