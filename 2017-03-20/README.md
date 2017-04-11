@@ -1,4 +1,4 @@
-Voici mes Writeup pour cette édition.
+Voici les défis et les write-ups pour cette édition.
 
 -- Julien
 
