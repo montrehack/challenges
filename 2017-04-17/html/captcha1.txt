@@ -1,0 +1,44 @@
+<?php
+session_start();
+
+
+include("./simple-php-captcha/simple-php-captcha.php");
+if (isset($_POST['captcha'])){
+extract($_POST);
+if ($captcha === $_SESSION['captcha']['code']){
+	$_SESSION['success'] += 1;
+		if ($_SESSION['success'] > 5000){
+		echo 'The flag is NOT THE REAL FLAG';
+	} else { 
+	print 'You have '.$_SESSION['success'].' success so far. You need 5000 for a flag';
+} } else {echo 'Bad Captcha. Your tries will be reset to zero.'; $_SESSION['success']=0;}} else {
+$_SESSION['captcha'] = simple_php_captcha( array(
+	'min_length' => 5,
+	'max_length' => 9,
+	'backgrounds' => array('./backgrounds/45-degree-fabric.png','./backgrounds/cloth-alike.png','./backgrounds/grey-sandbag.png','./backgrounds/kinda-jean.png','./backgrounds/polyester-lite.png','./backgrounds/stitched-wool.png','./backgrounds/white-carbon.png','./backgrounds/white-wave.png'),
+	'fonts' => array('./fonts/times_new_yorker.ttf'),
+	'characters' => 'ABCDEFGHJKLMNPRSTUVWXYZabcdefghjkmnprstuvwxyz23456789',
+	'min_font_size' => 28,
+	'max_font_size' => 28,
+	'color' => '#666',
+	'angle_min' => 0,
+	'angle_max' => 20,
+	'shadow' => true,
+	'shadow_color' => '#fff',
+	'shadow_offset_x' => -1,
+	'shadow_offset_y' => 1
+));
+?> 
+<html>
+<body>
+<form  method='post'>
+<img src='<?php echo $_SESSION['captcha']['image_src']; ?>'><br>
+Captcha <input id='captcha' name='captcha' />
+<input type='submit'></form>
+</body> </html>
+<?php 
+//print_r($_SESSION);
+
+}
+
+?>
