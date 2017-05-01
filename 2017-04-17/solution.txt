@@ -1,0 +1,12 @@
+Captcha1:
+    Extract post vulnerability:
+    -Add _SESSION[captcha][code]=samecode and success to > 5000 in post parameters
+    -Example: captcha=12345&_SESSION[captcha][code]=12345&_SESSION[success]=5500
+
+Captcha2:
+    Remove the php session cookie and send an empty captcha
+
+Captcha3:
+    Use the time sent with the image URL to create the code locally.
+    Python script: solution3.py
+    PHP service calculating the code: prng_exploit.php
