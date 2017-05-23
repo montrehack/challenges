@@ -12,12 +12,7 @@
 <?php
     $host = $_GET['host'];
     $output = exec('ping -c 1 '.$host, $output, $result);
-    if($result == 0){
-        echo "up :)";
-    }
-    else {
-        echo "down :(";
-    }
+    echo $output;
 
 ?>
 
