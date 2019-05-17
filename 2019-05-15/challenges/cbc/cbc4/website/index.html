@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link href="style.css" rel="stylesheet" type="text/css">
+        <script>
+            delete WebAssembly.instantiateStreaming;
+        </script>
+        <script src='./wasm/cbc4_wasm.js'></script>
+    
+        <script>
+        window.addEventListener('load', async () => {
+            await wasm_bindgen('./wasm/cbc4_wasm_bg.wasm');
+        });
+        </script>
+    </head>
+</html>

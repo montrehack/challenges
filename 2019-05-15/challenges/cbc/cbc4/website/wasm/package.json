@@ -1,0 +1,12 @@
+{
+  "name": "cbc4-wasm",
+  "collaborators": [
+    "Philippe Dugre <philippe.dugre@polymtl.ca>"
+  ],
+  "version": "0.1.0",
+  "files": [
+    "cbc4_wasm_bg.wasm",
+    "cbc4_wasm.js"
+  ],
+  "browser": "cbc4_wasm.js"
+}
