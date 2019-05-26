@@ -1,6 +1,6 @@
-# Breaking AES
+# Breaking Real-World Crypto
 
-This repo contains cryptographic challenges that aim to teach various practical attacks on symmetric cryptography. All challenges use AES, but the same attacks can be used with pretty much any block or stream cipher.
+This repo contains cryptographic challenges that aim to exploit vulnerabilities resulting from the misuse of AES and other symmetric encryption algorithms.
 
 ## How to run
 
