@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <link href="style.css" rel="stylesheet" type="text/css">
+        <script src='./main.js'></script>
+        
+    </head>
+    <body>
+        <h1>AES-CTR 1!</h1>
+        You have been able to intercept the following ciphertext:
+        <h2 id="secret_ciphertext"></h2>
+        It has been encrypted with AES256-CTR with the code in ctr1.py. You can check the code!<br>
+        You can send a plaintext to encrypt here:<br>
+        <input id="encrypt_input"><br>
+        <button id="btn_encrypt">Encrypt</button><br>
+        <div id="encrypt_box"></div>
+        Break it, and send the flag here:<br>
+        <input id="flag_input"><br>
+        <button id="btn_verify">Verify</button><br>
+        <div id="verify_box"></div>
+    </body>
+</html>
