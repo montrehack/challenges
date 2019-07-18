@@ -1,0 +1,37 @@
+= Montrehack: Antidebugging Workshop
+Alexandre Beaulieu <alex@segfault.me>
+
+This repository contains the challenge source code aa well as the solution
+outline.  The binaries and PDBs from the workshop are included as well as the
+x64dbg database file for those who would like to follow along. If you place the
+PDB on your symbol path, x64dbg will pick it up and display all symbol
+information as well as source line numbers. Additionally, you can do the challenge
+in WinDbg and even follow along with the source code.
+
+Please note that the code itself is super buggy and most likely vulnerable to
+many things including out of bounds I/O and memory leaks. The code was made to
+get the challenges up and running quickly and demonstrate the techniques in a
+simple context.
+
+
+== Using the x64dbg database
+
+Go to your x64dbg unpack directory and find `release/x64/db` and place
+`debugme.exe.dd64` there. You may want to back up your original database to
+keep your work during the workshop.
+
+Any subsequent launch of the binary should have all the annotations from my
+solution. Enjoy!
+
+== Source Code
+
+https://github.com/alxbl/montrehack-antidbg
+
+
+== Write-ups
+
+Some really nice solutions that bypassed the anti-debugging using clever
+patches or scripts.
+
+* https://gist.github.com/HoLyVieR/d033fd74f4c462838a3f1c32ce1cf122[HoLyVieR's WinDbg Solution]
+* https://gist.github.com/nic-lovin/f161f3217d71b5db219b4c4ac6f99301[Nic-Lovin's Infinite Loop Solution]

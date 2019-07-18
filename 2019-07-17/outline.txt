@@ -1,0 +1,35 @@
+- Find `main` by using strings search
+- Set a breakpoint in main on the level dispatcher
+
+- Hit Continue and break on TLS callback
+- Find suspicious calls to RegisterClassEx
+- Identify WindowProc Address
+- Identify DebugActiveProcess and CreateNamedPipe functionality in sub-routine
+- Patch the real key (0x7001337) in place of the bogus key
+- Patch the IsDebuggerPresent function to always return false (xor eax, eax; ret)
+- Continue to entry point
+- Continue to main breakpoint
+
+- Level 1:
+- Set a breakpoint right after the `Your flag is at 0x...` string is printed.
+- Read flag in memory
+
+- Continue to level 2
+- Patch out the heap check so that the jump is taken unconditionally.
+- Continue to flag
+
+- Continue to level 3
+- Patch out CreateThread,int3 and flatten path to `mov rdx, KEY`.
+- Continue to flag
+
+- Continue to level 4
+- Go to the WndProc to identify the XOR key.
+- XOR the SendMessage parameter and observe that it's a valid address.
+- Go to the address and find the (same) XOR key for another function call.
+- XOR the set_key function and patch the address.
+- Step through to see the set_key being called.
+- Continue to flag.
+
+- Continue to level 5
+- Flag Key is patched from TLS earlier.
+- Continue to flag.
