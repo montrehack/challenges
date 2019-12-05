@@ -1,0 +1,70 @@
+
+.hacker-checkbox {width:30px;height: 30px;margin: 10px;}
+
+.rc-anchor{border-radius:3px;box-shadow:0 0 4px 1px rgba(0,0,0,0.08);-webkit-box-shadow:0 0 4px 1px rgba(0,0,0,0.08);-moz-box-shadow:0 0 4px 1px rgba(0,0,0,0.08)}
+.rc-anchor-normal{height:74px;width:300px}
+.rc-anchor-compact{height:136px;width:156px}
+.rc-anchor-dark{background:#222;color:#fff}
+.rc-anchor-dark.rc-anchor-normal{border:1px solid #525252}
+.rc-anchor-dark.rc-anchor-compact{border:1px solid #525252}
+.rc-anchor-light{background:#f9f9f9;color:#000}
+.rc-anchor-light.rc-anchor-normal{border:1px solid #d3d3d3}
+.rc-anchor-light.rc-anchor-compact{border:1px solid #d3d3d3}
+.rc-inline-block{display:inline-block;height:100%}
+.rc-anchor-center-container{display:table;height:100%}
+.rc-anchor-center-item{display:table-cell;vertical-align:middle}
+.rc-anchor-content{display:inline-block}
+.rc-anchor-normal .rc-anchor-content{height:74px;width:206px}
+.rc-anchor-compact .rc-anchor-content{height:85px}
+.rc-anchor-error-message{color:#ff0000;font-family:Roboto,helvetica,arial,sans-serif;font-size:14px;font-weight:400;line-height:16px;padding:0 10px}
+.rc-anchor-checkbox{margin:0 12px 2px 12px}
+.rc-anchor-checkbox-label{font-family:Roboto,helvetica,arial,sans-serif;font-size:14px;font-weight:400;line-height:17px}
+.rc-anchor-normal .rc-anchor-checkbox-label{width:152px}
+.rc-anchor-compact .rc-anchor-checkbox-label{width:95px}
+.rc-anchor-error-msg-container{color:#ff0000;font-family:Roboto,helvetica,arial,sans-serif;font-size:12px;font-weight:400;left:0;line-height:14px;margin:2px;position:absolute;top:0}
+.rc-anchor-normal.rc-anchor-error .rc-anchor-error-msg-container{width:240px}
+.rc-anchor-normal.rc-anchor-error .rc-anchor-content{margin-top:10px}
+.rc-anchor-compact.rc-anchor-error .rc-anchor-content{margin-top:25px}
+.rc-anchor-normal-footer{display:inline-block;height:74px;vertical-align:top;width:70px}
+.rc-anchor-compact-footer{margin:0 12px;text-align:center;width:136px}
+.rc-anchor-logo-img{background:url(/images/check_48.png);background-repeat:no-repeat}
+.rc-anchor-logo-text{cursor:default;font-family:Roboto,helvetica,arial,sans-serif;font-size:10px;font-weight:400;line-height:10px;margin-top:5px;text-align:center}
+.rc-anchor-light .rc-anchor-logo-text{color:#555}
+.rc-anchor-dark .rc-anchor-logo-text{color:#f5f5f5}
+.rc-anchor-logo-portrait{margin:10px 0 0 26px;width:58px;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none}
+.rc-anchor-logo-img-portrait{background-size:32px;height:32px;margin:0 13px 0 13px;width:32px}
+.rc-anchor-logo-landscape{-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none}
+.rc-anchor-logo-img-landscape{background-size:24px;display:inline-block;height:24px;width:24px}
+.rc-anchor-logo-landscape-text-holder{display:inline-block;height:24px;margin:0 2px 0 2px;width:54px}
+.rc-anchor-normal .rc-anchor-pt,.rc-anchor-invisible .rc-anchor-pt,.rc-anchor-compact .rc-anchor-pt{font-family:Roboto,helvetica,arial,sans-serif;font-size:8px;font-weight:400}
+.rc-anchor-pt{background-image:url('data:image/png;base64,iVBORw0KGgBoL6Dvu4FBZS7AsBUBZbcE0EjRBIuz9parvgrEmX/4MVE0L7QBTRCClqBDowGmyGhHCofEBOS1SOx60QPIbNRzukVUBw2TRTMzFBHWm8dot667QBwOIHpx+v6soBGF2CnpqISiEBuQvV/y/F8p3PIQBIGTOP9F5/dNyZiGzogBJcXEt1EWJH94pSxA088QY5YBWiaNaZJFBR8ByAQR+rC81yvCcFpMXMsBOaVCglLDuABdWrzBf9ldLSJs4Lp3FwBnQzn7CzeSOI3Qy0B9EIXDFzB5QLGudu775/sBNP9pBoXIhPQmJUKAHBXzzDzwBE3o+8tqsVKZcZrkLa7dg/gBICndwcwApDT5FAWspwBD4XRPGPTfAB2xVffRPFB4subgSnFB2jFY8DjyibeD+E1Z')}
+.rc-anchor-light .rc-anchor-pt a:link,.rc-anchor-light .rc-anchor-pt a:visited{color:#555}
+.rc-anchor-dark .rc-anchor-pt a:link,.rc-anchor-dark .rc-anchor-pt a:visited{color:#f5f5f5}
+.rc-anchor-pt a{text-decoration:none}
+.rc-anchor-pt a:hover{text-decoration:underline}
+.rc-anchor-normal .rc-anchor-pt{margin:2px 13px 0 0;padding-right:2px;position:absolute;right:0;text-align:right;width:276px}
+.rc-anchor-compact .rc-anchor-pt{margin:0 0 2px 0;width:132px}
+.rc-anchor-aria-status{display:none}
+.reload-icon{height:16px;width:16px}
+
+.goog-container:focus{outline:none}
+
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  font-family: "Lucida Console", Monaco, monospace;
+  background-repeat: no-repeat;
+  background-size:cover;
+  background-image:url('../images/christmas-bg.jpg');
+}
+
+.container {
+  border-radius: 25px;
+  background-color:#FFF;
+  padding:30px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
