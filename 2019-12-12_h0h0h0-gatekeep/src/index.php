@@ -1,10 +1,11 @@
 <?php
 
-$title="MontréHack h0h0h0 edition";
+$title="MontréHack h0h0h0day edition";
 
 if(isset($_POST['name']) && isset($_POST['email']) && isset($_POST['ishacker'])) {
 
     $log = json_encode(["name"=>$_POST['name'],"email"=>$_POST['email']]);
+    $log .= "\n";
     file_put_contents('/var/log/apache2/real_hackers.log', $log, FILE_APPEND);
     session_start();
     $_SESSION['ishacker'] = true;

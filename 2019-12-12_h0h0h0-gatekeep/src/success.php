@@ -1,5 +1,5 @@
 <?php
-$title="MontréHack h0h0h0 edition";
+$title="MontréHack h0h0h0day edition";
 
 session_start();
 

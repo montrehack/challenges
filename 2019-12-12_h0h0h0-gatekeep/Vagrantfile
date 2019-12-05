@@ -42,7 +42,7 @@ Vagrant.configure("2") do |config|
   config.vm.synced_folder ".", "/vagrant", disabled: true
   # Sync to /srv but with exclusions
   config.vm.synced_folder ".", "/srv", type: "rsync",
-    rsync__exclude: [".git/", "digitalocean.env"]
+    rsync__exclude: [".git/", "digitalocean.env", "logs/"]
 
   # docker / docker-compose provisioning
   config.vm.provision "shell", inline: <<-SCRIPT
