@@ -1,0 +1,8 @@
+Deployed an nginx with certbot and a letsencrypt cert on the host
+
+nginx ssl virtualhost only needs:
+
+    location / {
+      proxy_pass http://127.0.0.1:8008/;
+    }
+
