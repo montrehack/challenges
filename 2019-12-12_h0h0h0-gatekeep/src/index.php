@@ -44,7 +44,9 @@ if(isset($_POST['name']) && isset($_POST['email']) && isset($_POST['ishacker']))
 
                     <h2 class="section-heading"><?= $title ?></h2>
 
-                    <div class="alert alert-warning" role="alert">L'enregistrement requiert un paiement de 5$ pour couvrir la nourriture et l'alcool.  / The registration requires a 5$ fee for the food and the alcohol.</div>
+                    <div class="alert alert-warning" role="alert">Étant donné les places limités, l'enregistrement requiert un paiement symbolique de 5$ pour réduire l'impact des absents. <br/>//<br/> Due to limited space, registration requires a 5$ symbolic fee to avoid the impact of no-show.</div>
+
+                    <div>Attention, nous avons un système d'accréditation sophistiqué afin de permettre seulement aux vrais pirates de s'enregistrer! <br/>//<br/> Beware we have a sophisticated accreditation system to allow only real hackers to register!</div>
 
 <br/>
                     <form action="" method="post" class="form-registration">

@@ -41,12 +41,12 @@ else {
         <div class="col col-lg-6 col-md-6 col-sm-12 well">
 
 <h1>C'est presque terminé! / Almost done!</h1>
-<p>Vous êtes à une étape de vous enregistrer au party de noël le plus l33t. / You are at one step from registering to the most l33test christmas party.</p>
+<p>Vous êtes à une étape de vous enregistrer au party de noël le plus l33t. / You are at one step away from registering to the l33test Christmas party.</p>
 
 <h2>Eventbrite</h2>
 <p>
-Code: <b>N0-GUESSING-THIS-T1ME</b><br/>
-Lien/Link: <a target="_blank" href="https://www.eventbrite.ca/o/montrehack-4112158011">https://www.eventbrite.ca/o/montrehack-4112158011</a>
+Code: <b>T1ME-T0-PR3P4RE-Y0UR-CHALL3NGE</b><br/>
+Lien/Link: <a target="_blank" href="https://www.eventbrite.ca/e/montrehack-h0h0h0-day-party-tickets-85048932647">https://www.eventbrite.ca/e/montrehack-h0h0h0-day-party-tickets-85048932647</a>
 
 </p>
 
