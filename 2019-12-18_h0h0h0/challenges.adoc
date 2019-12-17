@@ -37,3 +37,14 @@ By prolog
 See `challenges/e9331b009bf88399a43e9f3bd0a4244c`
 
 By axdoomer
+
+
+== The Second Order
+
+See `challenges/h0h0h0_second_order/`
+
+Managed by docker-compose
+
+Deployed: http://h0h0h0day-xchange.montrehack.ca:2199/
+
+By Barberousse
