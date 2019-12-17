@@ -1,0 +1,9 @@
+= Flags
+
+== Spooky Holidays Weather App
+
+FLAG-i-hope-no-one-uses-that-gem
+
+== The Vault
+
+FLAG-a420384997c8a1a93d5a84046117c2aa
