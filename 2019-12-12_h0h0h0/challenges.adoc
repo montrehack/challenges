@@ -1,5 +1,10 @@
 = Challenges
 
+== Find the Challenge Designer
+
+Flag is the MontréHack slack display name of that person
+
+
 == Spooky Holidays Weather App
 
 https://spooky-holidays-weather-app.bcj.io/
@@ -8,8 +13,20 @@ Web
 
 By Becojo
 
+
 == The Vault
 
-See `challenges_files/prog.pyc`
+See `challenges/prog.pyc`
 
 By Olivier Arteau
+
+
+== PHP Login
+
+Available in this repo: `challenges/php-login`
+
+Managed by docker-compose
+
+Deployed: http://h0h0h0day-xchange.montrehack.ca:8080/
+
+By prolog
