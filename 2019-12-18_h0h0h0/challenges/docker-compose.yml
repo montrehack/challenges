@@ -47,5 +47,14 @@ services:
       networks:
           - h0h0h0-second-order
 
+  north-pole-server:
+      build: north-pole-server/
+      environment:
+          - FTP_PORT=5001
+          - HTTP_PORT=5000
+      ports:
+          - "5000-5020:5000-5020"
+      restart: on-failure
+
 networks:
   h0h0h0-second-order:

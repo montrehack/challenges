@@ -56,3 +56,10 @@ By Barberousse
 
 By JFGauron
 
+
+== North Pole's Server
+
+HTTP: http://h0h0h0day-xchange.montrehack.ca:5000/
+FTP: h0h0h0day-xchange.montrehack.ca 5001 (in passive mode)
+
+By KptCheeseWhiz

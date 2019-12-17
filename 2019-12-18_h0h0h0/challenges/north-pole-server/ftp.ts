@@ -13,7 +13,9 @@ const ftpServer = new FtpSrv({
     url: `ftp://0.0.0.0:${process.env.FTP_PORT || 5001}`,
     blacklist: ["MKD", "XMKD", "RMD", "XRMD"],
     greeting: "H0H0H0",
-    pasv_url: "ftp://0.0.0.0"
+    pasv_url: "ftp://138.197.161.41",
+    pasv_min: 5002,
+    pasv_max: 5020
 });
 
 ftpServer.on("login", (data, resolve, reject) => {
