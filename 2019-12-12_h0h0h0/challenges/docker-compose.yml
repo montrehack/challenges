@@ -1,0 +1,8 @@
+version: '2'
+
+services:
+  php-login:
+    build: php-login/
+    restart: always
+    ports:
+      - "8080:80"
