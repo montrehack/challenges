@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <title>H0H0H0</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="shortcut icon" href="favicon.png" />
+        <link
+            href="https://fonts.googleapis.com/css?family=Mountains+of+Christmas&display=swap"
+            rel="stylesheet"
+        />
+        <link rel="stylesheet" type="text/css" href="style.css" />
+        <script src="snowstorm.js"></script>
+        <script>
+            (() => {
+                function list() {
+                    fetch("/api/files")
+                        .then(result => result.json())
+                        .then(filenames => {
+                            const files = document.getElementById("files");
+                            files.innerHTML = "";
+
+                            filenames.forEach(file => {
+                                const row = document.createElement("tr");
+
+                                const name = document.createElement("td");
+                                name.innerText = file;
+
+                                const download = document.createElement("td");
+                                const download_button = document.createElement(
+                                    "input"
+                                );
+                                download_button.setAttribute("type", "button");
+                                download_button.value = "DOWNLOAD";
+                                download_button.onclick = () =>
+                                    window.open(`/api/files/${file}`);
+                                download.appendChild(download_button);
+
+                                const remove = document.createElement("td");
+                                const remove_button = document.createElement(
+                                    "input"
+                                );
+                                remove_button.setAttribute("type", "button");
+                                remove_button.value = "DELETE";
+                                remove_button.onclick = () => {
+                                    fetch("/api/files/" + file, {
+                                        method: "DELETE"
+                                    }).then(() => row.remove());
+                                };
+                                remove.appendChild(remove_button);
+
+                                row.appendChild(name);
+                                row.appendChild(download);
+                                row.appendChild(remove);
+
+                                files.appendChild(row);
+                            });
+                        })
+                        .catch(() => (window.location = "/"));
+                }
+
+                list();
+            })();
+        </script>
+    </head>
+    <body>
+        <audio autoplay>
+            <source
+                src="https://www.christmasgifts.com/christmasmusic/dance-of-the-sugar-plum-faries.mp3"
+                type="audio/mpeg"
+            />
+        </audio>
+        <form action="/api/upload" method="post" enctype="multipart/form-data">
+            <input type="file" name="file" />
+            <input type="submit" />
+        </form>
+        <table>
+            <thead>
+                <th>NAME</th>
+                <th>DOWNLOAD</th>
+                <th>DELETE</th>
+            </thead>
+            <tbody id="files"></tbody>
+        </table>
+    </body>
+</html>

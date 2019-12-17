@@ -1,0 +1,11 @@
+html {
+    background-image: url(https://i.imgur.com/zB5qMg7.jpg);
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+
+    height: 100vh;
+    width: 100vw;
+
+    font-family: "Mountains of Christmas", cursive;
+    color: black;
+}

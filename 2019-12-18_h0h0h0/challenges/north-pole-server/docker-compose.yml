@@ -1,0 +1,12 @@
+version: "3.0"
+
+services:
+    h0h0h0:
+        build: .
+        environment:
+            - FTP_PORT=5001
+            - HTTP_PORT=5000
+        ports:
+            - "5001:5001"
+            - "5000:5000"
+        restart: on-failure

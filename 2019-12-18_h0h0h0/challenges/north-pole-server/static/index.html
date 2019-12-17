@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <title>Welcome to North Pole's FTP/HTTP server!</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="shortcut icon" href="favicon.png">
+        <link href="https://fonts.googleapis.com/css?family=Mountains+of+Christmas&display=swap" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="style.css">
+        <script src="snowstorm.js"></script>
+    </head>
+    <body>
+        <audio autoplay>
+            <source src="https://www.christmasgifts.com/christmasmusic/dance-of-the-sugar-plum-faries.mp3" type="audio/mpeg">
+        </audio>
+        <div class="christmas" style="font-size: 5em; font-weight: bold;">Welcome to North Pole's FTP/HTTP server!</div>
+        <div class="christmas" style="font-size: 2em; font-weight: bold;">
+            Everyone can login (even those who have been bad this year!)
+        </div>
+        <div class="christmas" style="font-size: 2em; font-weight: bold;">
+            You can use this HTTP server to upload files or the FTP server on the next port
+        </div>
+        <p>
+            <form action="/api/login" method="post" enctype="application/x-www-form-urlencoded">
+                <input type="text" name="username" />
+                <input type="password" name="password" />
+                <input type="submit" />
+            </form>
+        </p>
+        <div>the source code can be found <a href="source.zip">here</a></div>
+        <script>
+            const divs = document.getElementsByClassName("christmas");
+            for (let a = 0; a < divs.length; a++) {
+                const div = divs.item(a);
+                const text = div.innerHTML;
+
+                div.innerHTML = div.innerHTML.split('').map((l, i) => `<span style="color: ${i % 2 === 0 ? "green" : "red"};">${l}</span>`).join('')
+            }
+        </script>
+    </body>
+</html>
