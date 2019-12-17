@@ -19,3 +19,8 @@ FLAG-ThAnKs_Mr_TypE_Juggal0_PhP
 == The Second Order
 
   h0h0h0{5omet1me5_N0_SQLi_1s_s7ill_SQLi}
+
+== 0day stores
+
+FLAG-d563f38516aab525552f150dd83110f7
+

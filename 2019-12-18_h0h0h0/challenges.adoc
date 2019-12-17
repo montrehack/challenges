@@ -48,3 +48,11 @@ Managed by docker-compose
 Deployed: http://h0h0h0day-xchange.montrehack.ca:2199/
 
 By Barberousse
+
+
+== 0day stores
+
+0day eCommerce as a service, to sell or buy all the 0days you need: http://ctf-infosec.com
+
+By JFGauron
+
