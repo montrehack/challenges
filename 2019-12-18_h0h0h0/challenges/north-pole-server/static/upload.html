@@ -65,12 +65,12 @@
         </script>
     </head>
     <body>
-        <audio autoplay>
-            <source
-                src="https://www.christmasgifts.com/christmasmusic/dance-of-the-sugar-plum-faries.mp3"
-                type="audio/mpeg"
-            />
-        </audio>
+        <iframe
+            src="/audio.html"
+            allow="autoplay"
+            id="audio"
+            style="display: none;"
+        ></iframe>
         <form action="/api/upload" method="post" enctype="multipart/form-data">
             <input type="file" name="file" />
             <input type="submit" />
