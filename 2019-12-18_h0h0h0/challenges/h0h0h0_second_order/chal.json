@@ -1,0 +1,8 @@
+{
+    "name": "The Second Order",
+    "description": "Flag format for this challenge is h0h0h0{[A-Za-z0-9_]+} You can download the website's source code..",
+    "author": "General Tux",
+    "category": "sqli",
+	"files": ["public_html.tar.gz"],
+    "flag": "h0h0h0{5omet1me5_N0_SQLi_1s_s7ill_SQLi}"
+}

@@ -1,0 +1,45 @@
+version: "3"
+
+services:
+    second_order_website:
+        build: the_second_order-website/
+        volumes:
+            - ./the_second_order-website/src/:/var/www/html/:ro
+        depends_on:
+            - second_order_db
+        restart: unless-stopped
+        environment:
+            DB_HOST: ${DB_HOST}
+            DB_NAME: ${DB_NAME}
+            DB_USER1: ${DB_USER1}
+            DB_USER1_PASS: ${DB_USER1_PASS}
+            DB_USER2: ${DB_USER2}
+            DB_USER2_PASS: ${DB_USER2_PASS}
+        networks:
+            - h0h0h0-second-order
+        ports:
+            - "2199:80"
+
+    second_order_db:
+        build:
+            context: db/
+            args:
+                - DB_NAME=${DB_NAME}
+                - MYSQL_DATABASE=${MYSQL_DATABASE}
+                - DB_USER1=${DB_USER1}
+                - DB_USER1_PASS=${DB_USER1_PASS}
+                - DB_USER2=${DB_USER2}
+                - DB_USER2_PASS=${DB_USER2_PASS}
+        restart: unless-stopped
+        environment:
+            MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+            MYSQL_DATABASE: ${MYSQL_DATABASE}
+            DB_USER1: ${DB_USER1}
+            DB_USER1_PASS: ${DB_USER1_PASS}
+            DB_USER2: ${DB_USER2}
+            DB_USER2_PASS: ${DB_USER2_PASS}
+        networks:
+            - h0h0h0-second-order
+
+networks:
+  h0h0h0-second-order:
