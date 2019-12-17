@@ -67,7 +67,11 @@ By KptCheeseWhiz
 
 == North Pole-ynomials
 
-TODO
+Implemented RLWE! Seems to work so it's s3cure right?
+
+todo: decrypt the ciphertext and get flag :)
+
+By lixtelnis
 
 
 == In Space, No One Can Hear You Scream
