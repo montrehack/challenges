@@ -63,3 +63,28 @@ HTTP: http://h0h0h0day-xchange.montrehack.ca:5000/
 FTP: h0h0h0day-xchange.montrehack.ca 5001 (in passive mode)
 
 By KptCheeseWhiz
+
+
+== North Pole-ynomials
+
+TODO
+
+
+== In Space, No One Can Hear You Scream
+
+See `challenges/sopa.raw`.
+
+Non, Scream n’est pas juste une série de films...
+
+By stormy
+
+
+== The Day The Frog Stood Still
+
+See `challenges/froggy/`
+
+Deux flags se cachent dans cet artefact binaire exécutable … les versions Linux et Windows sont identiques.
+
+By stormy
+
+

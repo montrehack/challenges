@@ -27,3 +27,14 @@ FLAG-d563f38516aab525552f150dd83110f7
 == North Pole's Server
 
   FLAG{YOURE_GETTING_COAL_THIS_CHRISTMAS}
+
+== In Space, No One Can Hear You Scream
+
+FLAG-ac67675aae438dfe9cf6f61fc9d81d2
+
+== The Day The Frog Stood Still
+
+* Flag 1 easy: FLAG-eea342a57c9313484e2b73715a5cbdb1
+* Flag 2: FLAG-8426aee7ad0218ed27ab80dccc04ff62
+
+
