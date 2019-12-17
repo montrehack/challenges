@@ -30,3 +30,10 @@ Managed by docker-compose
 Deployed: http://h0h0h0day-xchange.montrehack.ca:8080/
 
 By prolog
+
+
+== crackme
+
+See `challenges/e9331b009bf88399a43e9f3bd0a4244c`
+
+By axdoomer
