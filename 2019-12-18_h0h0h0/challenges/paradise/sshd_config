@@ -1,0 +1,31 @@
+Port 2222
+#AddressFamily any
+ListenAddress 0.0.0.0
+ListenAddress ::
+SyslogFacility AUTH
+LogLevel INFO
+PermitRootLogin no
+MaxSessions 1000
+PubkeyAuthentication no
+PasswordAuthentication yes
+PermitEmptyPasswords no
+ChallengeResponseAuthentication no
+UsePAM yes
+Banner /etc/ssh/sshd-banner
+
+AllowAgentForwarding no
+AllowTcpForwarding no
+X11Forwarding no
+PrintMotd no
+
+AcceptEnv LANG LC_*
+
+# override default of no subsystems
+Subsystem       sftp    /usr/lib/openssh/sftp-server
+
+# Example of overriding settings on a per-user basis
+#Match User anoncvs
+#       X11Forwarding no
+#       AllowTcpForwarding no
+#       PermitTTY no
+#       ForceCommand cvs server

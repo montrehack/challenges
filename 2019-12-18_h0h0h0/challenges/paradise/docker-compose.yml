@@ -1,0 +1,8 @@
+version: '3'
+services:
+  paradise:
+    build: .
+    hostname: paradise
+    tty: true
+    ports:
+    - "14141:2222"

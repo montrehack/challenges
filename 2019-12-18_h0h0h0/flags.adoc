@@ -68,3 +68,11 @@ FLAG-2ac750e5a65dfcca48447d9b74c46831
 == 99 Villeray
 
 FLAG{C99VILLERAYGANGGANG}
+
+== Quote Database
+
+FLAG-qEftt9QMSK65aDMqzwGExuHlmwipZWdh
+
+== Paradise
+
+FLAG-LLtrJ6tbslr3AatOrmPH0Hf30ezP9w6R

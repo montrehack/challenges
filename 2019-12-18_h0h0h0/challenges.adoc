@@ -173,3 +173,42 @@ http://h0h0h0day-xchange.montrehack.ca:9000/
 See also `challenges/99villeray/`.
 
 by nitbx
+
+
+== Quotes Database
+
+Exploitation
+
+The administrator has blocked our precious quote! Can you find a way to bypass this unfair censorship?
+
+```
+ncat h0h0h0day-xchange.montrehack.ca 10000
+```
+
+Server binary and an example quote database are provided.
+
+See also `challenges/quote-db/`.
+
+by alxbl
+
+
+== Paradise
+
+Reverse-Engineering
+
+Hey, man, I need your help. I've been kicked out of paradise and would like to get back in.  Unfortunately, the key changes every minute so I can't make it back. I was able to steal a message from God to one of his security consultants and I think it contains something that might
+be helpful for you.
+
+The gate is flag@h0h0h0day-xchange.montrehack.ca -p 14141
+
+If you help me get back into paradise, You will definitely go to
+paradise too!
+
+Attached file: message.tar.xz
+
+Hint: The name of the entity is "paradise", lowercase, no quotation marks.
+      Make sure you don't have time skew.
+
+See also `challenges/paradise/`.
+
+by alxbl

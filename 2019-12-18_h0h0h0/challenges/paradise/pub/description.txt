@@ -1,0 +1,14 @@
+Hey, man, I need your help. I've been kicked out of paradise and would
+like to get back in.  Unfortunately, the key changes every minute so I
+can't make it back. I was able to steal a message from God to one of
+his security consultants and I think it contains something that might
+be helpful for you.
+
+The gate is flag@montrehack.ca -p 14141
+
+Here's the [message][msg].
+
+If you help me get back into paradise, You will definitely go to
+paradise too!
+
+[msg]: https://chal.zip

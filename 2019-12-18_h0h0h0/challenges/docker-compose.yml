@@ -76,5 +76,17 @@ services:
           - "9000:80"
       restart: on-failure
 
+  quote-db:
+    build: quote-db/
+    ports:
+    - "10000:8888"
+
+  paradise:
+    build: paradise/
+    hostname: paradise
+    tty: true
+    ports:
+    - "14141:2222"
+
 networks:
   h0h0h0-second-order:

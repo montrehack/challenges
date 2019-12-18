@@ -1,0 +1,29 @@
+Jim,
+
+Those pesky demons have been getting past the gates more and more
+frequently. We need to do something about them otherwise the integrity
+of paradise is going to be compromised. I know you have a good solution,
+I'm counting on you, my son.
+
+    -- God
+
+
+Father,
+
+I've created an ELF which will protect our dear paradise from the foul
+demons. It will change the gate key every minute and protect us for
+infinity to come. The ELF will accept three important parameters:
+
+   In the first, an address to send the new holy key to.
+   In the second, the name of the entity to protect.
+   In the last, the magical value known as the epoch to mankind.
+
+The ELF will then proclaim 12 magical glyphs that make up the secret
+key to paradise.
+
+
+The cradle is already ready, but you must deploy this ELF protector so
+as to protect our precious paradise.
+
+   -- Jim
+
