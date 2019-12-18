@@ -247,7 +247,7 @@ By Masarah
 == Santa Claus Login
 // TODO missing challenge source
 
-Exploitation
+Programming
 
 Could you find the password?
 
