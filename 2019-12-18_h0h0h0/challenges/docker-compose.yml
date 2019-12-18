@@ -88,5 +88,11 @@ services:
     ports:
     - "14141:2222"
 
+  gift-ideas:
+    build: gift-ideas/
+    ports:
+      - "11000:80"
+    restart: on-failure
+
 networks:
   h0h0h0-second-order:

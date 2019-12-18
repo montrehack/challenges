@@ -1,0 +1,9 @@
+version: '2'
+
+services:
+
+  gift-ideas:
+      build: ./
+      ports:
+          - "11000:80"
+      restart: on-failure
