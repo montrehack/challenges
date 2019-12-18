@@ -43,7 +43,7 @@ FLAG-ac67675aae438dfe9cf6f61fc9d81d2
 
 == Too Many Files
 
-// TODO
+FLAG_9d9c3a85bcee7de93a2da8c752036c79
 
 == Xmas Lottery
 
@@ -87,7 +87,7 @@ Flag - 978bf4e17caec-29d50c68cc458801c7b89641111-0.028
 
 == Santa Claus Login
 
-FLAG-TeTuBenDansTonCotonOuate
+FLAG-TeTuBinDansTonCotonOuate
 
 == Repas 1
 
