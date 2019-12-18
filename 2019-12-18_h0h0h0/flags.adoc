@@ -44,3 +44,7 @@ FLAG-ac67675aae438dfe9cf6f61fc9d81d2
 == Too Many Files
 
 // TODO
+
+== Xmas Lottery
+
+FLAG-RBr1Ryen75o1aZ6NZriap6VopLBZTx3C

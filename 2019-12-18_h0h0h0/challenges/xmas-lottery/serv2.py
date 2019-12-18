@@ -2,6 +2,7 @@ import socket
 import threading
 import random
 import sys
+import os
 
 class ThreadedServer(object):
     def __init__(self, host, port):
@@ -86,7 +87,7 @@ if __name__ == "__main__":
     try:
         port = int(sys.argv[1])
     except:
-        port = 5000
+        port = int(os.getenv('PORT', 5000))
     ThreadedServer('', port).listen()
 
 

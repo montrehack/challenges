@@ -1,0 +1,11 @@
+version: '2'
+
+services:
+
+  xmas-lottery:
+      build: ./
+      environment:
+          - PORT=6000
+      ports:
+          - "6000:6000"
+      restart: on-failure

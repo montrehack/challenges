@@ -56,5 +56,14 @@ services:
           - "5000-5020:5000-5020"
       restart: on-failure
 
+  xmas-lottery:
+      build: xmas-lottery/
+      environment:
+          - PORT=6000
+      ports:
+          - "6000:6000"
+      restart: on-failure
+
+
 networks:
   h0h0h0-second-order:
