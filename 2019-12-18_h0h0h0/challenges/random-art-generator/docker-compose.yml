@@ -1,0 +1,9 @@
+version: '2'
+
+services:
+
+  random-art-generator:
+      build: ./
+      ports:
+          - "7000:80"
+      restart: on-failure

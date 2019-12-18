@@ -64,6 +64,11 @@ services:
           - "6000:6000"
       restart: on-failure
 
+  random-art-generator:
+      build: random-art-generator/
+      ports:
+          - "7000:80"
+      restart: on-failure
 
 networks:
   h0h0h0-second-order:

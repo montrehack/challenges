@@ -154,3 +154,11 @@ Anticipated solution requires access to a reachable server.
 http://hard.owoups.org/ or `challenges/ping-it/` (not integrated into docker-compose setup)
 
 by mnadeau
+
+== Random Art Generator
+
+http://h0h0h0day-xchange.montrehack.ca:7000/
+
+See `challenges/random-art-generator`.
+
+by Marc-Olivier
