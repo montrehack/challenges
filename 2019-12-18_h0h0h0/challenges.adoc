@@ -162,3 +162,14 @@ http://h0h0h0day-xchange.montrehack.ca:7000/
 See `challenges/random-art-generator`.
 
 by Marc-Olivier
+
+
+== 99 Villeray
+
+A file containing the flag is located in `/home/`.
+
+http://h0h0h0day-xchange.montrehack.ca:9000/
+
+See also `challenges/99villeray/`.
+
+by nitbx

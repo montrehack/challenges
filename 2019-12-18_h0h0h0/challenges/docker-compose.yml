@@ -70,5 +70,11 @@ services:
           - "7000:80"
       restart: on-failure
 
+  99villeray:
+      build: 99villeray/
+      ports:
+          - "9000:80"
+      restart: on-failure
+
 networks:
   h0h0h0-second-order:

@@ -1,0 +1,9 @@
+version: '2'
+
+services:
+
+  99villeray:
+      build: ./
+      ports:
+          - "8000:80"
+      restart: on-failure
