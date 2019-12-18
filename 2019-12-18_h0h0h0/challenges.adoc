@@ -212,3 +212,30 @@ Hint: The name of the entity is "paradise", lowercase, no quotation marks.
 See also `challenges/paradise/`.
 
 by alxbl
+
+
+== Enemy Hunting Notebook
+
+Data Science
+
+Grab this CSV and this Jupyter Notebook. Find the flag hidden in that data by
+following notebook instructions.
+
+A Jupyter Notebook requires Jupyter which you can install following
+instructions here: https://jupyter.org/install.html
+
+Most MacOS and Windows users will want to use a distribution like Anaconda.
+Linux users it depends. It always depends... But a lot of data science
+libraries comes bundled with Anaconda which is why it is popular.
+
+Once installed, in the directory where you downloaded the files, just run:
+
+```
+jupyter notebook
+```
+
+and a browser will open where you can load and interact with the notebook
+
+Don't forget to unzip the csv zip.
+
+By Masarah
