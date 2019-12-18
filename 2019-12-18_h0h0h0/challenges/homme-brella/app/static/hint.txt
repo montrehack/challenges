@@ -1,0 +1,17 @@
+import re
+import string
+
+def remove_control_chars(my_str):
+    return ''.join([x for x in my_str if x in string.printable])
+
+@app.route('/', methods=['GET'])
+def index():
+    url = request.args.get('preview')
+
+    if re.compile('<[a-zA-Z]').search(url):
+        res = 'Someone submitted a domain for review.'
+    else:
+        # We remove control chars to ensure the domain is properly handled by our bot
+        res = 'Someone submitted the {} domain for review.'.format(remove_control_chars(url))
+
+    return render_template('index.html', res=res)

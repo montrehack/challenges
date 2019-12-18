@@ -127,3 +127,30 @@ Cryptography
 ncat h0h0h0day-xchange.montrehack.ca 6000
 
 by nospace
+
+
+== "reverse"
+
+Reverse-Engineering
+
+http://easy.owoups.org/ or `reverse.txt`
+
+by mnadeau
+
+== Homme-Brella
+
+Web
+
+http://medium.owoups.org/ or `challenges/homme-brella/` (not integrated into docker-compose setup)
+
+by mnadeau
+
+== Ping-It!
+
+Web
+
+Anticipated solution requires access to a reachable server.
+
+http://hard.owoups.org/ or `challenges/ping-it/` (not integrated into docker-compose setup)
+
+by mnadeau
