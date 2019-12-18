@@ -94,5 +94,11 @@ services:
       - "11000:80"
     restart: on-failure
 
+  speak-friend-and-enter:
+      build: speak-friend-and-enter/
+      ports:
+          - "12000:8080"
+      restart: on-failure
+
 networks:
   h0h0h0-second-order:
