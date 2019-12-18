@@ -6,6 +6,7 @@ Flag is the MontréHack slack display name of that person
 
 
 == Spooky Holidays Weather App
+// TODO missing challenge source
 
 https://spooky-holidays-weather-app.bcj.io/
 
@@ -241,3 +242,14 @@ and a browser will open where you can load and interact with the notebook
 Don't forget to unzip the csv zip.
 
 By Masarah
+
+
+== Santa Claus Login
+// TODO missing challenge source
+
+Could you find the password?
+
+```
+nc 68.183.17.30 9996
+```
+
