@@ -351,3 +351,15 @@ http://h0h0h0day-xchange.montrehack.ca:11000/
 No RFI
 
 by fob
+
+== Fillthy Rancid Bacon
+
+Steganography
+
+Our band manager said our previous songs could use a bit more meat, so we put a lot of bacon in this one. Now he says it sounds like we're all trying to say something different. What do you think?
+
+Flag format: `{Guitar}{Drums}{Bass}{Synth}`
+
+See `challenges/Filthy Rancid Bacon - Layers.zip`.
+
+by shill
