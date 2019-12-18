@@ -247,9 +247,35 @@ By Masarah
 == Santa Claus Login
 // TODO missing challenge source
 
+Exploitation
+
 Could you find the password?
 
 ```
 nc 68.183.17.30 9996
 ```
 
+== Repas 1
+
+Forensics
+
+This challenge unlocks Repas 1
+
+**Important**: Do not execute untrusted files on your system! You should have
+an environment for that. MontréHack admins hasn't seen the source of that
+binary.
+
+by Chris
+
+
+== Repas 2
+
+Reverse-Engineering
+
+This is linked with Repas 1
+
+**Important**: Do not execute untrusted files on your system! You should have
+an environment for that. MontréHack admins hasn't seen the source of that
+binary.
+
+by Chris

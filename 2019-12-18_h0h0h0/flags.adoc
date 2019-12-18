@@ -88,3 +88,11 @@ Flag - 978bf4e17caec-29d50c68cc458801c7b89641111-0.028
 == Santa Claus Login
 
 FLAG-TeTuBenDansTonCotonOuate
+
+== Repas 1
+
+FLAG{aISbI5MVYm8WW1GZ77HG}
+
+== Repas 2
+
+FLAG{HOhoHOmotH3rfUXOR3RHohO}
