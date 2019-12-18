@@ -199,7 +199,9 @@ Reverse-Engineering
 Hey, man, I need your help. I've been kicked out of paradise and would like to get back in.  Unfortunately, the key changes every minute so I can't make it back. I was able to steal a message from God to one of his security consultants and I think it contains something that might
 be helpful for you.
 
-The gate is flag@h0h0h0day-xchange.montrehack.ca -p 14141
+The gate is at:
+
+    ssh flag@h0h0h0day-xchange.montrehack.ca -p 14141
 
 If you help me get back into paradise, You will definitely go to
 paradise too!
