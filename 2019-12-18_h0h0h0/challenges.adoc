@@ -390,3 +390,10 @@ See `challenges/LOGO.png`.
 By alyssa
 
 
+== Late: shibe
+
+reverse-engineering
+
+See `challenges/shibe`.
+
+by gorley
