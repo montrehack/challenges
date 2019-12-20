@@ -379,3 +379,14 @@ Web
 http://h0h0h0day-xchange.montrehack.ca:12000/
 
 By ncusson
+
+
+== Mission
+
+Steganography
+
+See `challenges/LOGO.png`.
+
+By alyssa
+
+

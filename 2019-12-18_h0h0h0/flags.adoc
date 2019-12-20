@@ -132,3 +132,7 @@ FLAG_NatifPasSecure!
 == Speak Friend and Enter
 
 FLAG-692191b797fc6fc3686bcfa8e70e3887
+
+== Mission
+
+FLAG-HummusGuruChangelemondeGoVegan
