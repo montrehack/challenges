@@ -30,7 +30,7 @@ FLAG-d563f38516aab525552f150dd83110f7
 
 == North Pole-ynomials
 
-pol_timez_pol???
+  pol_timez_pol???
 
 == In Space, No One Can Hear You Scream
 
@@ -67,7 +67,7 @@ FLAG-2ac750e5a65dfcca48447d9b74c46831
 
 == 99 Villeray
 
-FLAG{C99VILLERAYGANGGANG}
+  FLAG{C99VILLERAYGANGGANG}
 
 == Quote Database
 
@@ -93,11 +93,11 @@ FLAG-TeTuBinDansTonCotonOuate
 
 == Repas 1
 
-FLAG{aISbI5MVYm8WW1GZ77HG}
+  FLAG{aISbI5MVYm8WW1GZ77HG}
 
 == Repas 2
 
-FLAG{HOhoHOmotH3rfUXOR3RHohO}
+  FLAG{HOhoHOmotH3rfUXOR3RHohO}
 
 == Gift Ideas 1
 
