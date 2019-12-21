@@ -390,6 +390,17 @@ See `challenges/LOGO.png`.
 By alyssa
 
 
+== Chirstmas Card
+
+Cryptography
+
+Can you crack the code on the Christmas card?
+
+See `challenges/carte_northsec.docx` for source and
+`challenges/carte_northsec.pdf`.
+
+By Masarah and Laurent
+
 == Late: shibe
 
 reverse-engineering
