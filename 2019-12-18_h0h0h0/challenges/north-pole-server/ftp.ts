@@ -12,10 +12,10 @@ const redisClient = redis.createClient({
 const ftpServer = new FtpSrv({
     url: `ftp://0.0.0.0:${process.env.FTP_PORT || 5001}`,
     blacklist: ["MKD", "XMKD", "RMD", "XRMD"],
-    greeting: "H0H0H0",
-    pasv_url: "ftp://138.197.161.41",
-    pasv_min: 5002,
-    pasv_max: 5020
+    greeting: "h0h0h0",
+    pasv_url: `ftp://${process.env.FTP_PASV_IP || "127.0.0.1"}`,
+    pasv_min: Number(process.env.FTP_PASV_MIN || 5002),
+    pasv_max: Number(process.env.FTP_PASV_MAX || 5020)
 });
 
 ftpServer.on("login", (data, resolve, reject) => {

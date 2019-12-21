@@ -4,6 +4,9 @@ services:
     h0h0h0:
         build: .
         environment:
+            - FTP_PASV_MIN=5002
+            - FTP_PASV_MAX=5020
+            - FTP_PASV_IP=138.197.161.41
             - FTP_PORT=5001
             - HTTP_PORT=5000
         ports:
