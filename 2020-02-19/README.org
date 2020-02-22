@@ -1,0 +1,129 @@
+#+TITLE: Montrehack Rudimentary Rust Reversing
+#+AUTHOR: Alexandre Beaulieu (@alxbl)
+#+DATE: Feb. 19, 2020
+#+OPTIONS: timestamp:nil
+#+OPTIONS: toc:nil
+#+OPTIONS: num:nil
+#+REVEAL_HLEVEL: 1
+#+REVEAL_THEME: solarized
+#+REVEAL_PLUGINS: (highlight)
+#+REVEAL_INIT_OPTIONS: controls: false
+
+* Rust Fundamentals
+** Calling Convention (Linux x64)
+   - Similar to =C=
+   - Frist 6 arguments in registers
+     - =rdi, rsi, rdx, rcx, r8, r9=
+   - Rest on stack
+   - Return value in =rax=
+   - Caller frees arguments
+   
+** Addressing
+   - All arguments are addressed =rsp= relative.
+     - Depends on stack size (=sub rsp, <N>=)
+   - Code is Position Independent
+     - =PLT= calls are =rip=-relative
+     - =GOT= offsets are =rip=-relative
+
+** Caller Example
+   #+BEGIN_SRC asm
+     example::main:
+       sub rsp, 24 ; Allocate 24 bytes for arguments
+       mov edi, 1
+       mov esi, 2
+       mov edx, 3
+       mov ecx, 4
+       mov r8d, 5
+       mov r9d, 6
+       mov qword ptr [rsp], 7     ; Argument 7
+       mov qword ptr [rsp + 8], 8 ; Argument 8
+       call qword ptr [rip + example::doit@GOTPCREL]
+       add rsp, 24 ; Cleanup Arguments
+       ret
+   #+END_SRC
+     
+   *NOTICE*: There are 24 bytes on the stack, but only 16 bytes of arguments.
+   #+BEGIN_NOTES
+   Parameters fit in 32 bits so =rustc= is using the 32 bit wide
+   registers to minimize code.
+     
+   More stack than required is allocated (24 bytes vs. 16 required)
+   Shadow Stack Space? Padding? Alignment?
+     
+   The stack space is reclaimed after the =doit= call.
+   #+END_NOTES
+
+** Callee Example
+   #+BEGIN_SRC asm
+     example::doit:
+       sub rsp, 104
+       mov rax, qword ptr [rsp + 120]
+       mov r10, qword ptr [rsp + 112]
+       add rdi, rsi
+       seto r11b    ; Overflow check
+       test r11b, 1
+       jne .LBB0_8  ; Panic on overflow
+   #+END_SRC
+     
+   - 104 bytes of stack space
+   - rsp+120-104 = rsp+16 = arg1 
+   - return address at *rsp*
+   #+BEGIN_NOTES
+   The function allocates 104 bytes of stack.
+
+   =rax= contains argument 8: =rsp+120-104-8= is =rsp+8= before the =doit=
+   stack frame is allocated.
+     
+   That =8= bytes is the alignment/padding/shadow from the calling
+   function.
+   #+END_NOTES
+
+** Closures and Predicates
+   - Rust has several functional features
+   - Template generalizations
+     
+   [[file:screens/002-predicates.png]]
+
+* Challenges
+  http://ctf.segfault.me/
+    
+  Have Fun!
+
+* Hints
+  #+ATTR_REVEAL: :frag (fade-in fade-in fade-in) :frag_idx (1 2 3)
+  - Flag format is =FLAG-[a-zA-Z0-9]{37}=
+  - Try clearing the blob of strings data definition
+    - Clearer XREFs
+  - Find the =main= and =validate= symbols
+  
+** Reader Hints
+   #+ATTR_REVEAL: :frag (fade-in fade-in fade-in) :frag_idx (1 2 3)
+   - There are 4 parts in the validation routine
+   - Each part gates the next parts
+   - *Static*: Start from the end of the function and work backwards
+
+** Reveal Hints
+   #+ATTR_REVEAL: :frag (fade-in fade-in fade-in fade-in) :frag_idx (1 2 3 4)
+   - You need to create a file
+   - The file must contain a 4 byte key and the flag
+   - Look for the base64 encoding
+   - Known Plaintext: =FLAG-= should be enough to recover the key
+
+** Reactivate Hint
+   #+ATTR_REVEAL: :frag (fade-in fade-in fade-in) :frag_idx (1 2 3)
+   - The JSON payload is ={"user":"...","key":"..."}=
+   - Post to =/activate=
+   - Only one valid key per user
+   - Find where the key is computed and grab it from memory
+
+   *NOTE*: It's probably easier to do this one dynamically
+
+* References
+  - https://www.rust-lang.org/
+  - https://godbolt.org/
+  - https://rust-lang.github.io/rustc-guide/
+
+* Credit
+  - https://segfault.me 
+  - https://github.com/alxbl
+

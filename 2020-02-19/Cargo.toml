@@ -1,0 +1,15 @@
+[package]
+name = "r3"
+version = "0.1.0"
+authors = ["Alexandre Beaulieu <alex@segfault.me>"]
+edition = "2018"
+
+[profile.release]
+debug = false
+
+[dependencies]
+rand = "0.7.2"
+base64 = "0.11.0"
+serde = { version = "1.0", features = ["derive"] }
+tokio = { version = "0.2", features = ["macros"] }
+warp = "0.2.1"
