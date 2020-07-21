@@ -1,5 +1,5 @@
 from flask import Flask, flash, request, render_template, session, redirect, url_for, g
-import sqlite3, time
+import os, sqlite3, time
 
 app = Flask('giga')
 
@@ -25,7 +25,8 @@ def query_db(query, args=(), one=False):
     cur.close()
     return (rv[0] if rv else None) if one else rv
 
-app.secret_key = '9d7fZcPp5wsMaRE6a9GkkuZ5RzUGsExn'
+# aggressively rotate secret so that cookies from the disclosed pcap can't be reused
+app.secret_key = os.urandom(50)
 
 @app.route("/init")
 def init_db():
