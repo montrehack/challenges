@@ -1,0 +1,29 @@
+<html>
+<header>
+<link rel="stylesheet" href="{{ url_for('static', filename='main.css') }}">
+</link>
+</header>
+
+<body>
+	<div id='main'>
+	{% include "header.html" ignore missing %}
+<h1> It appears you have not logged from this recently </h1>
+
+ <p>
+ Please answer the following security question 
+
+                        {% with msg = get_flashed_messages() %}
+        {% if msg %}
+ <h1>  {{ msg[0] }} 
+</h1>
+        {% endif %}
+        {% endwith %}
+</p>
+
+<form method='POST' action='/securityQuestion'>
+<input name='answer' />
+<input type='submit' />
+</form>
+	</div>
+</body>
+</html>
