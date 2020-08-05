@@ -1,0 +1,26 @@
+<html>
+<header>
+<link rel="stylesheet" href="{{ url_for('static', filename='main.css') }}">
+</link>
+</header>
+<body>
+
+{% include "header.html" ignore missing %}
+	<div id="main">
+
+
+{% if session %}
+<a href='/logout'> Logout </a>
+{% endif %}    
+
+<div id="content">
+<div id="download">
+<h1> Here are the files for your user </h1>
+{% for link in links %}
+        <li><a href="/download/{{link.id }}">{{ link.name }}</a></li>
+    {% endfor %}
+
+</div>
+</div>
+{% include "footer.html" ignore missing %}
+</html>

@@ -1,0 +1,27 @@
+<html>
+<header>
+<link rel="stylesheet" href="{{ url_for('static', filename='main.css') }}">
+</link>
+</header>
+<body>
+
+{% include "header.html" ignore missing %}
+	<div id="main">
+	{% with msg = get_flashed_messages() %}
+	{% if msg %}
+	<div id="error">
+		{{ msg[0] }} 
+	</div>
+	{% endif %}
+	{% endwith %}
+
+<div id="content">
+
+
+	<a href='/login'><img src='/static/button.png' /></a>
+
+</div>
+</div>
+{% include "footer.html" ignore missing %}
+</body>
+</html>

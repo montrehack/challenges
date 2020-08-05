@@ -1,0 +1,12 @@
+= README
+
+capture.pcap was recreated and must be provided to participants
+
+The server must be restarted after the capture is made to generate a new app
+secret and prevent session cookie re-use.
+
+They must bypass the per source IP secret question. Works well for a remote
+only MontréHack.
+
+There is a bonus flag in the second zip file in the pcap that is unrelated to
+the code review challenge.
