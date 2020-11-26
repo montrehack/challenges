@@ -8,7 +8,6 @@
 # virtualenv
 bin/
 include/
-lib/
 Scripts/
 Include/
 Lib/

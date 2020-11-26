@@ -1,0 +1,6 @@
+= README
+
+Shared scripts coming from outside.
+
+* https://github.com/nbering/terraform-inventory/blob/master/terraform.py[terraform.py]
+  helps us integrate terraform with ansible to achieve infrastructure as code.

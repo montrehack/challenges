@@ -1,0 +1,47 @@
+---
+- hosts: challenge-server
+  remote_user: root
+  gather_facts: True
+
+  tasks:
+  - name: Adding multi-arch support
+    shell: "dpkg --add-architecture i386"
+
+  - name: Refresh package cache
+    apt:
+      update_cache: yes
+
+  - name: Perform upgrades
+    apt:
+      upgrade: safe
+
+  - name: Install 32-bit dependencies
+    apt:
+      pkg:
+      - libc6:i386
+      - libncurses5:i386
+      - libstdc++6:i386
+
+  - name: upload challenge file
+    file:
+      path: "/srv/challenge"
+      state: directory
+
+  - name: Deploy challenge files
+    copy:
+      mode: "preserve"
+      src: "../challenge/"
+      dest: "/srv/challenge/"
+
+  - name: Deploy systemd service and socket units
+    copy:
+      mode: "preserve"
+      src: "../systemd/"
+      dest: "/etc/systemd/system"
+
+  - name: Active challenge systemd units
+    systemd:
+      state: started
+      enabled: yes
+      daemon_reload: yes
+      name: challenge.socket

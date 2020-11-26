@@ -1,0 +1,11 @@
+[Unit]
+Description=Challenge Socket
+
+[Socket]
+ListenStream=2323
+#NoDelay=true
+#FreeBind=true
+Accept=true
+
+[Install]
+WantedBy=sockets.target

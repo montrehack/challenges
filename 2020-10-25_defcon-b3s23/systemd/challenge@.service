@@ -1,0 +1,9 @@
+[Unit]
+Description=Challenge Service
+#Requires=challenge.socket
+
+[Service]
+ExecStart=-/srv/challenge/b3s23
+StandardInput=socket
+StandardOutput=socket
+WorkingDirectory=/srv/challenge
