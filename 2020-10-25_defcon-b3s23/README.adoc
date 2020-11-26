@@ -1,6 +1,17 @@
 = README
 
-== Setup
+== Challenge
+
+https://montrehack.ca/2020/11/25/defcon-b3s23.html[Defcon 24 CTF Quals b3s23]
+
+* Provided binary file is in `challenge/`
+* Solution will be in `solution/`
+
+== Infrastructure
+
+Terraform is deploying resources on Digital Ocean and running Ansible for provisoning.
+
+=== Setup
 
 * Install https://www.terraform.io[terraform]
 * Install https://docs.ansible.com/ansible/latest/installation_guide/intro_installation.html[Ansible] (>= 2.4)
@@ -18,15 +29,15 @@ Source it:
 
     source env.sh
 
-== Do it
+=== Do it
 
     terraform plan
     terraform apply
 
-== Connect
+=== Connect
 
     ansible-ssh -i ../lib/ext/terraform.py challenge-server
 
-== Finish him
+=== Finish him
 
     terraform destroy
