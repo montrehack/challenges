@@ -1,0 +1,7 @@
+# Terraform
+.terraform/
+*.tfstate
+*.tfstate.backup
+
+# Our secrets
+/env.sh

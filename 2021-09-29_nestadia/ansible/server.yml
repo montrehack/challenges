@@ -1,0 +1,13 @@
+---
+- hosts: challenge-server
+  remote_user: root
+  gather_facts: True
+
+  tasks:
+  - name: Refresh package cache
+    apt:
+      update_cache: yes
+
+  - name: Perform upgrades
+    apt:
+      upgrade: safe

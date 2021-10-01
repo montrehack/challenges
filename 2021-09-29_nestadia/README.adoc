@@ -1,0 +1,42 @@
+= README
+
+== Challenge
+
+https://montrehack.ca/2021/09/29/northsec-2021-nestadia.html[NorthSec CTF 2021 Nestadia]
+
+Once the infrastructure is up. Deploy and install this repository: https://github.com/zer0x64/nsec-2021-nestadia
+
+== Infrastructure
+
+Terraform is deploying resources on Digital Ocean and running Ansible for provisoning.
+
+=== Setup
+
+* Install https://www.terraform.io[terraform]
+* Install https://docs.ansible.com/ansible/latest/installation_guide/intro_installation.html[Ansible] (>= 2.4)
+* Download and install a pre-compiled https://github.com/nbering/terraform-provider-ansible/releases[terraform-provider-ansible]. Visit the releases page  and download the latest release for your target architecture.
+* Unzip the downloaded file and copy the terraform-provider-ansible binary to a designated directory as described in https://www.terraform.io/docs/plugins/basics.html#installing-a-plugin[Terraform plugin installation] instructions.
+* Dynamic inventory script in `../lib/ext/` is: https://github.com/nbering/terraform-inventory/blob/master/terraform.py[terraform.py]
+
+Put your secrets in `env.sh`:
+
+    export DO_API_TOKEN=<digital ocean api key>
+    export TF_VAR_SSH_KEY_FILE=<full path to private disposable key>
+    export TF_VAR_DO_SSH_KEY_NAME=<name of the ssh key as imported in digital ocean>
+
+Source it:
+
+    source env.sh
+
+=== Do it
+
+    terraform plan
+    terraform apply
+
+=== Connect
+
+    ansible-ssh -i ../lib/ext/terraform.py challenge-server
+
+=== Finish him
+
+    terraform destroy
