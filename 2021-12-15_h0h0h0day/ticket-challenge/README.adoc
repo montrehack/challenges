@@ -1,0 +1,8 @@
+= README
+
+== h0h0h0day ticket challenge
+
+`gift.bin` contains the signup code necessary to purchase IN-PERSON tickets.
+Can you find it?
+
+Use the flag as the access code to purchase your ticket here: https://www.eventbrite.ca/e/montrehack-h0h0h0day-2021-tickets-219608634337
