@@ -1,0 +1,123 @@
+@font-face { font-family: 'VT323';
+  src: url('./font/VT323-Regular.ttf')
+}
+
+:root {
+  --r-heading-color: #ffff00;
+  --r-heading-font: 'VT323', monospace !important;
+  --r-heading1-size: 2.5em;
+  --r-heading2-size: 1.85em;
+  --r-link-color: #44351d;
+  --r-main-color: #ffff00;
+  --r-main-font: 'VT323', monospace !important;
+}
+
+body {
+  background: black;
+}
+
+body.reveal-viewport {
+  background: black;
+  background-image: url('bg.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+figure img {
+  box-shadow: 0 0 1em 0.15em rgba(0, 0, 0, 0.75);
+}
+
+hr {
+  background: transparent;
+  border: 0;
+  border-bottom: 1px solid #afd59b;
+  margin: 1em auto;
+}
+
+.flags {
+  background: url('./images/status-bar-l.png') no-repeat left top,
+    url('./images/status-bar-r.png') no-repeat right top,
+    url('./images/status-bar-c.png') repeat-x center top #1b1b1b;
+  border: 0;
+  border-radius: 5px;
+  padding: 0.66em 0 0.25em;
+  text-align: center;
+  width: 100%;
+}
+
+.flags img {
+  margin: 0 0.2em;
+}
+
+.panel {
+  background: #ddd9c4;
+  border: 15px solid #8c8460;
+  border-image-outset: 22px 22px 25px 22px;
+  border-image-repeat: repeat;
+  border-image-slice: 44 44 50 44 fill;
+  border-image-source: url('./images/panel.png');
+  border-image-width: 22px 22px 25px 22px;
+  color: #333;
+  margin: auto;
+  padding: 1em;
+  position: relative;
+  width: 60%;
+
+  --r-heading-color: #333;
+}
+
+.panel::after {
+  background: url('./images/red.png') no-repeat center center;
+  background-size: contain;
+  bottom: -2.25em;
+  content: '';
+  height: 3em;
+  position: absolute;
+  right: -0.25em;
+  width: 2em;
+}
+
+.re-solution img {
+  max-width: unset;
+  max-height: unset;
+  margin-left: -10%;
+  width: 120%;
+}
+
+.reveal .slides {
+  box-sizing: border-box;
+  padding: 0 0.5vw 0 1vw;
+}
+
+.reveal .slides section {
+  padding-bottom: 5vh;
+}
+
+.reveal .slides section em {
+  color: #900;
+  font-style: normal;
+}
+
+.reveal .slides section p {
+  margin: 0 0 1.25em;
+}
+
+.reveal .slides section p:last-child {
+  margin-bottom: 0;
+}
+
+.reveal .slides section pre {
+  width: 100%;
+}
+
+.screenshot img {
+  box-shadow: 0 0 1em 0.15em rgba(0, 0, 0, 0.75);
+  display: block;
+  margin: 0 auto;
+}
+
+.writeups li {
+  font-size: 0.8em;
+  margin-bottom: 1.25em;
+  white-space: nowrap;
+}
