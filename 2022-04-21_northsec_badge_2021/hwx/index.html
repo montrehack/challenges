@@ -1,0 +1,965 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+  <title>NorthSec badge 2021 - Montrehack.ca workshop - 2022-04-21</title>
+
+  <link rel="stylesheet" href="./dist/reset.css">
+  <link rel="stylesheet" href="./dist/reveal.css">
+  <link rel="stylesheet" href="./dist/theme/night.css">
+  <link rel="stylesheet" href="./plugin/highlight/monokai.css">
+  <link rel="stylesheet" href="./style.css">
+</head>
+
+<body>
+  <div class="reveal">
+    <div class="slides">
+<!-- Presentation content -->
+
+
+<section>
+  <h3>Montrehack.ca // 2022-04-21</h3>
+  <div><img src="./images/statue.png"></div>
+  <h1>NORTHSEC 2021 CTF Badge</h1>
+  <p>presented by the badge team</p>
+</section>
+
+
+<section>
+  <h2>The plan for tonight</h2>
+
+  <p><em>3 hour</em> workshop, <em>2 hours</em> of hacking
+
+  <ul>
+    <li class="fragment">Dive right in.  Hands-on session: <em>30 minutes</em>
+    <li class="fragment">About the badge
+    <li class="fragment">Challenge solution
+    <li class="fragment">Hands-on session: <em>30 minutes</em>
+    <li class="fragment">Another challenge solution
+    <li class="fragment">
+      [ Hands-on session: <em>15 minutes</em>, followed
+      <br><span>&nbsp;&nbsp;</span>by solutions ] <em class="fragment">x4</em>
+  </ul>
+</section>
+
+
+<section data-background-color="rgba(0, 0, 0, 0.66)">
+  <div class="panel">
+    <p>
+      <a href="https://github.com/nsec/nsec-badge" rel="noopener noreferrer" target="_blank">
+        github.com/nsec/nsec-badge
+      </a>
+    </p>
+
+    <p>All flags are in the public source code on Github, but don't go looking for them.</p>
+    <p>The goal is to learn how to hack an unknown, blackbox device.</p>
+  </div>
+</section>
+
+
+<section>
+  <h2>Reverse engineering challenges</h2>
+  <p>
+    Two binaries for the reverse-engineering challenge are hosted on the badge
+    and can be downloaded over Wifi.
+  </p>
+
+  <p>
+    Download them from Github: <br>
+    <a href="https://github.com/nsec/nsec-badge/tree/master/bin" rel="noopener noreferrer">
+      https://github.com/nsec/nsec-badge/tree/master/bin
+    </a>
+  </p>
+
+  <p>
+    Because of the guest network setup, connecting to the badge on Wifi may not
+    be possible.
+  </p>
+</section>
+
+
+<section>
+  <h2>Write-ups</h2>
+
+  <div class="r-stack">
+    <div class="fragment fade-out" data-fragment-index="0">
+      <p>
+        This presentation will include some solutions and images from write-ups
+        made by participants from last year.
+      </p>
+
+      <p>
+        You should read them after the workshop because they are very entertaining,
+        go much more in detail and describe the trial and error process of the
+        author.
+      </p>
+    </div>
+
+    <div class="fragment" data-fragment-index="0">
+      <ul class="writeups">
+        <li><a href="https://erichogue.ca/2021/05/NorthSec2021BadgeFirstFlags/" rel="noopener">https://erichogue.ca/2021/05/NorthSec2021BadgeFirstFlags/</a>
+        <li><a href="https://hideandsec.sh/books/ctf/page/northsec-2021-badge-writeup" rel="noopener">https://hideandsec.sh/books/ctf/page/northsec-2021-badge-writeup</a>
+        <li><a href="https://blog.quantumlyconfused.com/ctf/2021/05/30/nsec2021-badgelife-pt1/" rel="noopener">https://blog.quantumlyconfused.com/ctf/2021/05/30/nsec2021-badgelife-pt1/</a>
+        <li><a href="https://boschko.ca/northsec-2021-badge-writeup/" rel="noopener">https://boschko.ca/northsec-2021-badge-writeup/</a>
+        <li>
+          <a href="https://nsec.io/competition-write-ups/" rel="noopener">https://nsec.io/competition-write-ups/</a>
+          <br>^ All NorthSec challenge write-ups
+      </ul>
+    </div>
+  </div>
+</section>
+
+
+<section data-background-color="rgba(0, 0, 0, 0.66)">
+  <div class="panel">
+    <h3>Hacking session!</h3>
+    <div class="timer" data-timelimit="1800"></div>
+  </div>
+</section>
+
+
+<section>
+  <h2>About the badge</h2>
+
+  <ul>
+    <li class="fragment">A traditional element of the in-person <br> <em>NorthSec</em> conference
+    <li class="fragment">The "game" is not a real game
+    <li class="fragment">Designed without any particular goal in mind, <br> the end result is "organic"
+    <li class="fragment">Beginner-level CTF
+    <li class="fragment">The purpose is to teach you <br> to pay attention to small details
+  </ul>
+</section>
+
+
+<section>
+  <h2>The making</h2>
+
+  <iframe class="r-stretch" width="560" height="315" src="https://www.youtube-nocookie.com/embed/zkiFeA-PHm0?rel=0&showinfo=0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen autoplay></iframe>
+
+  <p>
+    <a href="https://www.youtube.com/watch?v=zkiFeA-PHm0" rel="noopener" target="_blank">
+      https://www.youtube.com/watch?v=zkiFeA-PHm0
+    </a>
+  </p>
+</section>
+
+
+<section>
+  <h2>Flagbot</h2>
+  <p><img src="./images/flagbot.png"></p>
+</section>
+
+
+<section>
+  <div class="flags" data-on="1"></div>
+</section>
+
+
+<section>
+  <h2>Have you ever heard of <br> 'Konami code'?</h2>
+
+  <div class="r-stack">
+    <div class="fragment fade-in-then-out">
+      <blockquote>
+        The Konami Code is a cheat code that appears in many Konami video
+        games.  The player has to press a sequence of buttons on the game
+        controller to enable a cheat or other effects.
+      </blockquote>
+
+      <p>https://en.wikipedia.org/wiki/Konami_code</p>
+    </div>
+
+    <div class="fragment">
+      <p><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e2/Konami_Code.svg/300px-Konami_Code.svg.png" width="70%"></p>
+
+      <p>* some variations of this sequence exist</p>
+    </div>
+  </div>
+</section>
+
+
+<section>
+  <h2>Are u listening?</h2>
+  <div class="r-stack">
+    <div class="fragment fade-in-then-out">
+      <p>The badge has Wifi connectivity, <br> so it can be classified as an IoT device.</p>
+      <p><img src="./images/status-bar-wifi-on.png"></p>
+    </div>
+
+    <div class="fragment fade-in-then-out">
+      <p>Does it try to talk to anything?
+      <p>Does it "call home"?
+    </div>
+
+    <div class="fragment fade-in-then-out">
+      <p>** Difficult to do the correct setup <br> during the workshop.
+    </div>
+
+    <div class="fragment fade-in-then-out">
+      <p>For most participants during the CTF, <br> this was the most difficult flag, <br> so we'll discuss it first.
+    </div>
+
+    <div class="fragment fade-in-then-out">
+      <p>A hint left on the Discord channel:</p>
+      <blockquote>
+        If the badge tried to do curl https://nsec.io/flag.txt for example,
+        do you think you would be able to detect this with your current
+        setup?
+      </blockquote>
+    </div>
+
+    <div class="fragment fade-in-then-out">
+      <figure>
+        <img src="https://hideandsec.sh/uploads/images/gallery/2021-06/scaled-1680-/CQQMgUGJYicm46ps-image1-min.PNG" height="300">
+        <figcaption><small>https://hideandsec.sh/books/ctf/page/northsec-2021-badge-writeup</small></figcaption>
+      </figure>
+    </div>
+
+    <div class="fragment fade-in-then-out">
+      <figure>
+        <img src="https://erichogue.ca/assets/images/2021/05/NorthSecBadge/pcap.png" height="300">
+        <figcaption><small>https://erichogue.ca/2021/05/NorthSec2021BadgeNetworking/</small></figcaption>
+      </figure>
+    </div>
+
+    <div class="fragment fade-in-then-out">
+      <figure>
+        <img src="https://blog.quantumlyconfused.com/assets/nsec2021/badgelife/flag9-4.png" width="100%">
+        <figcaption><small>https://blog.quantumlyconfused.com/ctf/2021/05/30/nsec2021-badgelife-pt1/</small></figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+
+<section>
+  <div class="flags" data-on="2"></div>
+</section>
+
+
+<section data-background-color="rgba(0, 0, 0, 0.66)">
+  <div class="panel">
+    <h3>Hacking session!</h3>
+    <div class="timer" data-timelimit="1800"></div>
+  </div>
+</section>
+
+
+<section>
+  <h2>Where there are NO flags?</h2>
+
+  <ul>
+    <li class="fragment">On the badge itself (silkscreen, etc.)
+    <li class="fragment">In the sound effects
+    <li class="fragment">In the LED blinking patterns
+    <li class="fragment">In the weird 6-pin connectors on the body <br> and the head of the horse
+    <li class="fragment">On the badge webpage
+    <li class="fragment">In the firmware of the CH340C chip (U3)
+  </ul>
+</section>
+
+
+<section>
+  <h2>Le Lac du Quack</h2>
+
+  <div class="r-stack">
+    <div class="fragment fade-in-then-out">
+      <p class="screenshot"><img src="./images/lac-du-quack-1.png">
+    </div>
+
+    <div class="fragment fade-in-then-out">
+      <p class="screenshot"><img src="./images/lac-du-quack-2.png">
+      <p>
+        Always look for serial console on the device! <br>
+        It may output very useful information, <br>
+        such as debug log or error messages.
+      </p>
+    </div>
+
+    <div class="fragment fade-in-then-out">
+      <pre><code data-trim data-noescape>
+$ picocom -b 115200 /dev/ttyUSB0 
+picocom v3.1
+
+port is        : /dev/ttyUSB0
+flowcontrol    : none
+baudrate is    : 115200
+parity is      : none
+databits are   : 8
+stopbits are   : 1
+escape is      : C-a
+local echo is  : no
+noinit is      : no
+noreset is     : no
+hangup is      : no
+nolock is      : no
+send_cmd is    : sz -vv
+receive_cmd is : rz -vv -E
+imap is        : 
+omap is        : 
+emap is        : crcrlf,delbs,
+logfile is     : none
+initstring     : none
+exit_after is  : not set
+exit is        : no
+      </code></pre>
+    </div>
+
+    <div class="fragment fade-in-then-out">
+      <video class="r-stretch" autoplay preload loop>
+        <source src="./video/cli-glitch.mp4">
+      </video>
+    </div>
+
+    <div class="fragment fade-in-then-out">
+      <p class="screenshot"><img src="./images/lac-du-quack-3.png">
+    </div>
+
+    <div class="fragment fade-in-then-out">
+      <blockquote>
+        ANSI escape sequences are a standard for in-band signaling to control
+        cursor location, color, font styling, and other options on video text
+        terminals and terminal emulators. 
+      </blockquote>
+
+      <p>https://en.wikipedia.org/wiki/ANSI_escape_code</p>
+    </div>
+
+    <div class="fragment fade-in-then-out">
+      <pre><code data-trim data-noescape>
+\x1b[?1049h
+\x1b[H\x1b[2J\x1b[3J
+\x1b[?1049l
+      </code></pre>
+    </div>
+
+    <div class="fragment fade-in-then-out">
+      <figure>
+        <img src="https://blog.quantumlyconfused.com/assets/nsec2021/badgelife/flag6-4.png" height="300">
+        <figcaption><small>https://blog.quantumlyconfused.com/ctf/2021/05/30/nsec2021-badgelife-pt1/</small></figcaption>
+      </figure>
+    </div>
+
+    <div class="fragment fade-in-then-out">
+      <p><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b5/International_Morse_Code.svg/260px-International_Morse_Code.svg.png">
+      <p>https://en.wikipedia.org/wiki/Morse_code</p>
+    </div>
+
+    <div class="fragment fade-in-then-out">
+      <figure>
+        <img src="https://hideandsec.sh/uploads/images/gallery/2021-06/scaled-1680-/q9QLxq7pxZVvqOjZ-image-1622908365995.png">
+        <figcaption><small>https://hideandsec.sh/books/ctf/page/northsec-2021-badge-writeup</small></figcaption>
+      </figure>
+    </div>
+
+    <div class="fragment fade-in-then-out">
+      <pre><code data-trim data-noescape>
+static constexpr char quack[] =
+    "quackquackquickquack quickquickquack quickquack quackquickquackquick "
+    "quackquickquack quickquick quackquack quickquack quackquickquick "
+    "quickquickquack quackquickquackquick quackquickquack quack "
+    "quackquackquack quackquackquick quick quack quackquickquickquick "
+    "quickquackquick quick quickquack quackquickquick quickquickquack "
+    "quickquickquick quick quack quickquickquickquick quickquick "
+    "quickquickquick quickquickquackquick quickquackquickquick quickquack "
+    "quackquackquick quackquickquickquick quackquick quickquickquickquack "
+    "quackquackquickquick quackquickquack quickquack quickquackquack "
+    "quackquack quickquickquick quackquickquackquack quickquickquick";
+      </code></pre>
+    </div>
+  </div>
+</section>
+
+
+<section>
+  <div class="flags" data-on="3"></div>
+</section>
+
+
+<section data-background-color="rgba(0, 0, 0, 0.66)">
+  <div class="panel">
+    <h3>Hacking session!</h3>
+    <div class="timer" data-timelimit="900"></div>
+  </div>
+</section>
+
+
+<section>
+  <h2>Up-down-left-right</h2>
+
+  <div class="r-stack">
+    <div class="fragment fade-in-then-out">
+      <p class="screenshot"><img src="./images/konami-1.png" height="400"></p>
+    </div>
+
+    <div class="fragment fade-in-then-out">
+      <p class="screenshot"><img src="./images/konami-2.png" height="400"></p>
+    </div>
+  </div>
+</section>
+
+
+<section>
+  <h2>The off-limits island</h2>
+
+  <div class="r-stack">
+    <div class="fragment fade-in-then-out">
+      <p class="screenshot"><img src="./images/island-1.png" height="400"></p>
+    </div>
+
+    <div class="fragment fade-in-then-out">
+      <p>Can't swim. Can't fly. <br> No choice but to walk.</p>
+      <p><img src="./images/island-2.png" height="72"></p>
+    </div>
+
+    <div class="fragment fade-in-then-out">
+      <p class="screenshot"><img src="./images/island-3.png" height="400"></p>
+    </div>
+
+    <div class="fragment fade-in-then-out">
+      <pre><code data-trim data-noescape>
+user@linux:esp32/spiffs/rpg$ tree
+.
+├── main.blocked
+└── main.scene
+
+0 directories, 2 files
+      </code></pre>
+    </div>
+
+    <div class="fragment fade-in-then-out">
+      <pre><code data-trim data-noescape>
+user@linux:esp32/spiffs/rpg$ xxd main.blocked | head
+00000000: ffff ffff ffff ffff ffff ffff ffff ffff  ................
+00000010: ffff ffff ffff ffff ffff ffff ffff ffff  ................
+00000020: ffff ffff ffff ffff ffff ffff ffff ffff  ................
+00000030: ffff ffff ffff ffff ffff ffff ffff ffff  ................
+00000040: ffff ffff ffff ffff ffff ffff ffff ffff  ................
+00000050: ffff ffff ffff ffff ffff ffff ffff ffff  ................
+00000060: ffff ffff 81ff ffff 01f8 ffff ffff 1f00  ................
+00000070: f8ff ff1f 0000 0000 ffff ffff ff81 ffff  ................
+00000080: ff01 f8ff ffff ff1f 00f8 ffff 1f00 0000  ................
+00000090: 00ff ffff ffff 9fff ffff 01f8 ffff ffff  ................
+      </code></pre>
+    </div>
+
+    <div class="fragment fade-in-then-out">
+      <figure>
+        <img src="https://erichogue.ca/assets/images/2021/05/NorthSecBadge/MapV2.png" width="100%">
+        <figcaption><small>https://erichogue.ca/2021/05/NorthSec2021BadgeTheMap/</small></figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+
+<section>
+  <h2>How do I get past the gate?</h2>
+
+  <div class="r-stack">
+    <div class="fragment fade-in-then-out">
+      <p class="screenshot"><img src="./images/gate-1.png" width="80%"></p>
+    </div>
+
+    <div class="fragment fade-in-then-out">
+      <p class="screenshot"><img src="./images/gate-2.png" width="80%"></p>
+    </div>
+  </div>
+</section>
+
+
+<section>
+  <div class="flags" data-on="5"></div>
+</section>
+
+
+<section data-background-color="rgba(0, 0, 0, 0.66)">
+  <div class="panel">
+    <h3>Hacking session!</h3>
+    <div class="timer" data-timelimit="900"></div>
+  </div>
+</section>
+
+
+<section>
+  <h2>Are you really CYBER!?</h2>
+
+  <div class="r-stack">
+    <div class="fragment fade-in-then-out">
+      <p class="screenshot"><img src="./images/punk-1.png" height="400"></p>
+    </div>
+
+    <div class="fragment fade-in-then-out">
+      <figure>
+        <img src="https://blog.quantumlyconfused.com/assets/nsec2021/badgelife/flag7-2.png" height="400">
+        <figcaption><small>https://blog.quantumlyconfused.com/ctf/2021/05/30/nsec2021-badgelife-pt1/</small></figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+
+<section>
+  <div class="flags" data-on="6"></div>
+</section>
+
+
+<section data-background-color="rgba(0, 0, 0, 0.66)">
+  <div class="panel">
+    <h3>Hacking session!</h3>
+    <div class="timer" data-timelimit="900"></div>
+  </div>
+</section>
+
+
+<section>
+  <h2>RE challenge solutions</h2>
+
+  <div class="r-stack">
+    <figure class="fragment fade-out" data-fragment-index="0">
+      <img src="https://erichogue.ca/assets/images/2021/05/NorthSecBadge/REDownload.jpg" height="350">
+      <figcaption><small>https://erichogue.ca/2021/05/NorthSec2021BadgeReverseEngineeringFlags/</small></figcaption>
+    </figure>
+
+    <div class="fragment" data-fragment-index="0">
+      <pre><code class="language-bash" data-trim data-noescape>
+$ file re*.elf
+re101.elf: ELF 32-bit LSB executable, Tensilica Xtensa,
+version 1 (SYSV), statically linked, with debug_info, not stripped
+re102.elf: ELF 32-bit LSB executable, Tensilica Xtensa,
+version 1 (SYSV), statically linked, with debug_info, not stripped
+      </code></pre>
+    </div>
+  </div>
+</section>
+
+
+<section>
+  <h2>RE challenge solutions</h2>
+
+  <p>You need a disassembler.</p>
+
+  <ul>
+    <li class="fragment"><em>R2 / Rizin</em>: out-of-the-box
+    <li class="fragment">
+      <em>Ghidra</em>: with a plugin <br>
+      <span class="fragment">https://github.com/yath/ghidra-xtensa</span>
+
+    <li class="fragment"><em>IDA</em>: ???
+  </ul>
+</section>
+
+
+<section data-background-color="rgba(0, 0, 0, 0.9)">
+  <div class="r-stack re-solution">
+    <h2>re101.elf</h2>
+
+    <div class="fragment"><img src="./images/re-1.jpeg"></div>
+    <div class="fragment"><img src="./images/re-2.jpeg"></div>
+    <div class="fragment"><img src="./images/re-3.jpeg"></div>
+    <div class="fragment"><img src="./images/re-4.jpeg"></div>
+    <div class="fragment"><img src="./images/re-5.jpeg"></div>
+    <div class="fragment"><img src="./images/re-6.jpeg"></div>
+    <div class="fragment"><img src="./images/re-7.jpeg"></div>
+  </div>
+</section>
+
+
+<section data-background-color="rgba(0, 0, 0, 0.9)">
+  <div class="r-stack re-solution">
+    <h2>re102.elf</h2>
+
+    <div class="fragment"><img src="./images/re-8.jpeg"></div>
+    <div class="fragment"><img src="./images/re-9.jpeg"></div>
+  </div>
+</section>
+
+<section>
+  <div class="flags" data-on="8"></div>
+</section>
+
+
+<section>
+  <h2>About the 'bonus' flag</h2>
+
+  <div class="r-stack">
+    <div class="fragment fade-in-then-out">
+      <ul>
+        <li>Intended to be more difficult than other flags.
+        <li>Not counted by the FLAGBOT, you can get the full <br> <em>Badge Wizard</em> role with other 9 flags.
+        <li>There is no actual flag, you have to make it.
+        <li>No intended solution - you are on your own.
+      </ul>
+    </div>
+
+    <div class="fragment fade-in-then-out">
+      <ul>
+        <li>You need to modify the flash image to write it back to the badge.
+        <li>You can damage the firmware if you do this incorrectly.
+        <li>Because the firmware wasn't released until after NSEC, this means you risk "bricking" the badge.
+      </ul>
+    </div>
+
+    <div class="fragment fade-in-then-out">
+      <p>Dump the firmware and run strings:</p>
+
+      <pre><code data-trim data-noescape>
+static const char firmware_dump_flag[] =
+    "Have you dumped the firmware? Here is your flag "
+    "[FLAG-JTAGPower0verwhelming]. Now flip the right bit in memory to "
+    "activate the last (10th) flag icon in the status bar on screen.";
+      </code></pre>
+    </div>
+
+    <div class="fragment fade-in-then-out">
+      <p>Try to dump the full contents of the flash during the last hacking session.</p>
+      <p>It can be tricky to get it right...</p>
+    </div>
+  </div>
+</section>
+
+
+<section data-background-color="rgba(0, 0, 0, 0.66)">
+  <div class="panel">
+    <h3>Hacking session! (final)</h3>
+    <div class="timer" data-timelimit="900"></div>
+  </div>
+</section>
+
+
+<section>
+  <h2>Auto-complete my flag...</h2>
+
+  <div class="r-stack">
+    <div class="fragment fade-out" data-fragment-index="0">
+      <video autoplay preload loop>
+        <source src="./video/cli-boot.mp4">
+      </video>
+    </div>
+
+    <div class="fragment fade-in-then-out" data-fragment-index="0">
+      <pre><code class="language-bash" data-trim data-noescape>
+Welcome to the nsec badge console!
+Type 'help' to get the list of commands.
+Use UP/DOWN arrows to navigate through command history.
+Press TAB when typing command name to auto-complete.
+      </code></pre>
+
+      <p>&nbsp;</p>
+    </div>
+
+    <div class="fragment">
+      <pre><code class="language-bash" data-trim data-noescape data-line-numbers="4">
+Welcome to the nsec badge console!
+Type 'help' to get the list of commands.
+Use UP/DOWN arrows to navigate through command history.
+Press TAB when typing command name to auto-complete.
+      </code></pre>
+
+      <p class="fragment">Just try it for yourself...</p>
+    </div>
+  </div>
+</section>
+
+
+<section>
+  <h2>The 'bonus' flag</h2>
+
+  <div class="r-stack">
+    <div class="fragment fade-in-then-out">
+      <pre><code data-trim data-noescape>
+$ esptool.py read_flash --help
+usage: esptool read_flash [-h] [--spi-connection SPI_CONNECTION]
+               [--no-progress] address size filename
+
+positional arguments:
+  address               Start address
+  size                  Size of region to dump
+  filename              Name of binary dump
+
+optional arguments:
+  -h, --help            show this help message and exit
+  --spi-connection SPI_CONNECTION, -sc SPI_CONNECTION
+                        ESP32-only argument. Override default SPI Flash
+                        connection. Value can be SPI, HSPI or a comma-separated
+                        list of 5 I/O numbers to use for SPI flash
+                        (CLK,Q,D,HD,CS).
+  --no-progress, -p     Suppress progress output
+      </code></pre>
+
+      <p>https://github.com/espressif/esptool</p>
+    </div>
+
+    <div class="fragment fade-in-then-out">
+      <p>Alternatively, download from Github:</p>
+
+      <p>
+        <a href="https://github.com/nsec/nsec-badge/releases/download/nsec21/nsec2021.bin" rel="noopener">
+          https://github.com/nsec/nsec-badge/releases/download/nsec21/nsec2021.bin
+        </a>
+      </p>
+
+      <p>* wasn't an option during the CTF.</p>
+    </div>
+  </div>
+</section>
+
+
+<section>
+  <h2>You have the flash image, <br> now what?</h2>
+
+  <p class="fragment">Extracting an ELF From an ESP32 - <br> Chris Lyne and Nick Miles (Shmoocon 2020)</p>
+
+  <p class="fragment">
+    <a href="https://www.youtube.com/watch?v=w4_3vwN_2dI" rel="noopener noreferrer">
+      https://www.youtube.com/watch?v=w4_3vwN_2dI
+    </a>
+  </p>
+
+  <p class="fragment">This video was discovered by participants.</p>
+</section>
+
+
+<section>
+  <h2>ESP32 Firmware Image to ELF</h2>
+
+  <p>
+    <a href="https://github.com/tenable/esp32_image_parser" rel="noopener noreferrer">
+      https://github.com/tenable/esp32_image_parser
+    </a>
+  </p>
+
+  <pre><code data-trim data-noescape>
+$ esp32_image_parser.py show_partitions nsec2021.bin
+
+reading partition table...
+entry 0:
+  label      : nvs
+  offset     : 0x9000
+  length     : 24576
+  type       : 1 [DATA]
+  sub type   : 2 [WIFI]
+
+entry 1:
+  label      : phy_init
+  offset     : 0xf000
+  length     : 4096
+  type       : 1 [DATA]
+  sub type   : 1 [RF]
+
+...
+  </code></pre>
+</section>
+
+
+<section>
+  <h2>Dump NVS partition</h2>
+
+  <p>https://docs.espressif.com/projects/esp-idf/en/latest/esp32/api-reference/storage/nvs_flash.html</p>
+
+  <pre><code data-trim data-noescape>
+$ esp32_image_parser.py dump_nvs nsec2021.bin -partition nvs | wc -l
+2176
+
+$ esp32_image_parser.py dump_nvs nsec2021.bin -partition nvs | grep Key
+      Key : storage
+      Key : misc
+      Key : log
+      Key : log
+      Key : nvs.net80211
+      Key : opmode
+      Key : sta.ssid
+      Key : sta.ssid
+      Key : sta.authmode
+      Key : sta.pswd
+      Key : sta.pswd
+      Key : sta.pmk
+      Key : sta.pmk
+      Key : sta.chan
+      Key : auto.conn
+      Key : bssid.set
+      Key : sta.bssid
+      Key : sta.bssid
+      Key : sta.lis_intval
+      Key : sta.phym
+      Key : sta.phybw
+      Key : sta.apsw
+      Key : sta.apsw
+      Key : sta.apinfo
+      Key : sta.apinfo
+      Key : sta.scan_method
+      Key : sta.sort_method
+      Key : sta.minrssi
+      Key : sta.minauth
+      Key : sta.pmf_e
+      Key : sta.pmf_r
+      Key : sta.btm_e
+      Key : sta.rrm_e
+      Key : ap.ssid
+      Key : ap.ssid
+      Key : ap.passwd
+      Key : ap.passwd
+      Key : ap.pmk
+      Key : ap.pmk
+      Key : ap.chan
+      Key : ap.authmode
+      Key : ap.hidden
+      Key : ap.max.conn
+      Key : bcn.interval
+      Key : ap.phym
+      Key : ap.phybw
+      Key : ap.sndchan
+      Key : ap.pmf_e
+      Key : ap.pmf_r
+      Key : lorate
+      Key : country
+      Key : country
+      Key : opmode
+      Key : phy
+      Key : cal_data
+      Key : cal_data
+      Key : cal_data
+      Key : cal_mac
+      Key : cal_mac
+      Key : cal_version
+      Key : opmode
+  </code></pre>
+</section>
+
+
+<section>
+  <h2>Dump NVS partition</h2>
+
+  <div class="r-stack">
+    <div class="fragment fade-out" data-fragment-index="0">
+      <p>What is the correct key?</p>
+    </div>
+
+    <div class="fragment" data-fragment-index="0">
+      <p>If you downloaded the stock flash image from Github, <br> you are out of luck.</p>
+
+      <p class="fragment">
+        The badge stores the flags in the <em>save</em> key, <br> which is created on the fly.
+      </p>
+
+      <p class="fragment">
+        The only way to know this is dump the flash, activate some flag, dump it again, then compare two files.
+      </p>
+    </div>
+  </div>
+</section>
+
+
+<section>
+  <h2>Finding the saved flags</h2>
+
+  <ul>
+    <li class="fragment">Compare the two dumped flash images
+    <li class="fragment">Locate the key that has changed
+  </ul>
+
+  <figure class="fragment">
+    <img src="https://hideandsec.sh/uploads/images/gallery/2021-06/scaled-1680-/sdbre0PzMX4060G6-image-1623119149125.png" width="80%">
+    <figcaption><small>https://hideandsec.sh/books/ctf/page/northsec-2021-badge-writeup</small></figcaption>
+  </figure>
+</section>
+
+
+<section>
+  <h2>Finding the saved flags</h2>
+
+  <p>Dump the partition with</p>
+
+  <pre><code>
+$ esp32_image_parser.py dump_partition -partition nvs nsec2021.bin 
+Dumping partition 'nvs' to nvs_out.bin
+  </code></pre>
+
+  <p>Locate the correct byte <br> and change its value in a HEX editor.</p>
+</section>
+
+
+<section>
+  <h2>Write the partition back</h2>
+
+  <div class="r-stack">
+    <div class="fragment fade-out" data-fragment-index="0">
+      <p>
+        We extracted only one partition from the full flash image, so we cannot
+        simply write it back - this will corrupt the firmware.
+      </p>
+
+      <pre><code data-trim data-noescape>
+$ stat -c"%n %s" *bin
+nsec2021.bin 16777216
+nvs_out.bin  24576
+      </code></pre>
+
+      <p>We need to find the correct offset.</p>
+    </div>
+
+    <div class="fragment fade-in-then-out" data-fragment-index="0">
+      <pre><code data-trim data-noescape data-line-numbers="6">
+$ esp32_image_parser.py show_partitions nsec2021.bin
+
+reading partition table...
+entry 0:
+  label      : nvs
+  offset     : 0x9000
+  length     : 24576
+  type       : 1 [DATA]
+  sub type   : 2 [WIFI]
+
+...
+      </code></pre>
+    </div>
+
+    <figure class="fragment">
+      <img src="https://hideandsec.sh/uploads/images/gallery/2021-06/scaled-1680-/YczCw99Z3q3PaNr4-image-1623120556635.png" width="100%">
+      <figcaption><small>https://hideandsec.sh/books/ctf/page/northsec-2021-badge-writeup</small></figcaption>
+    </figure>
+  </div>
+</section>
+
+
+<section>
+  <div class="flags" data-on="10"></div>
+</section>
+
+
+<section data-background-color="rgba(0, 0, 0, 0.8)">
+  <img src="./images/map-evolution.gif" height="650">
+</section>
+
+
+<section>
+  <h2>What should you do next?</h2>
+
+  <ul>
+    <li class="fragment">Try to solve all challenges again, to make sure you understand all steps.
+    <li class="fragment">Use this badge as a dev.board for your next IoT project.
+    <li class="fragment">Follow #badgelife of Twitter.
+    <li class="fragment">Port DOOM to it. (you never know)
+    <li class="fragment">Participate in the next <em>NorthSec</em> for more <br> CTF craziness!
+  </ul>
+</section>
+
+
+<section>
+  <div><img src="./images/statue.png"></div>
+  <h1>Thank you for listening!</h1>
+  <h3>https://nsec.io/ <br> https://montrehack.ca/</h3>
+</section>
+
+
+<!-- /Presentation content -->
+    </div>
+  </div>
+
+  <script src="./dist/reveal.js"></script>
+  <script src="./plugin/highlight/highlight.js"></script>
+  <script src="./script.js"></script>
+</body>
+</html>
