@@ -7,7 +7,7 @@ resource "digitalocean_droplet" "ctfd" {
   # initial size (smallest cpu-optimized)
   size     = "s-2vcpu-4gb"
   # production size
-  #size     = "c-32"
+  #size     = "c-16-intel"
   resize_disk = false
   ssh_keys = [data.digitalocean_ssh_key.server.fingerprint]
 
