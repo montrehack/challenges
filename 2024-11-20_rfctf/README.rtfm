@@ -1,0 +1,34 @@
+########################
+# Files
+########################
+Link to sstv.iq : https://drive.google.com/file/d/18KcJIkY3oTgmaTq-uQ9A9wAkQZ_dWwio/view?usp=sharing
+
+
+########################
+# Needed softwares
+########################
+sudo apt install gqrx-sdr pavucontrol qsstv fldigi direwolf
+
+
+########################
+# painter.iqfloat & painter_w_noise.iqfloat
+########################
+GQRX C
+Device : Other
+Device string : file=/path/to/your/file,rate=1e6,repeat=true,throttle=true
+Input rate : 1000000
+
+########################
+# sstv.iq
+########################
+Device : Complex Sampled (IQ) File
+Device string : file=/path/to/your/file,freq=144000,rate=192000,repeat=true,throttle=true
+Input rate : 192000
+
+
+########################
+# aprs.wav
+########################
+
+incoming...
+
