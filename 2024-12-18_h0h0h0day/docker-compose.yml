@@ -1,0 +1,71 @@
+version: '2'
+
+services:
+  ctfd:
+    build: ctfd/
+    user: root
+    restart: always
+    ports:
+      - "127.0.0.1:8000:8000"
+    environment:
+      - UPLOAD_FOLDER=/var/uploads
+      - DATABASE_URL=mysql+pymysql://ctfd:ctfd@db/ctfd
+      - REDIS_URL=redis://cache:6379
+      - WORKERS=1
+      - LOG_FOLDER=/var/log/CTFd
+      - ACCESS_LOG=-
+      - ERROR_LOG=-
+      - REVERSE_PROXY=true
+      - DISCORD_WEBHOOK_URL=${DISCORD_WEBHOOK_URL}
+      - DISCORD_WEBHOOK_LIMIT=10000
+      # :triangular_flag_on_post: h0h0h0-day! gdenhez just solved spook || doot for 1 points! :tada:
+      - DISCORD_WEBHOOK_MESSAGE=🚩 h0h0h0-day! {user} just solved {challenge} for {value} points! 🎉
+    volumes:
+      - .data/CTFd/logs:/var/log/CTFd
+      - .data/CTFd/uploads:/var/uploads
+      #- .:/opt/CTFd:ro
+    depends_on:
+      - db
+    networks:
+        default:
+        internal:
+
+  nginx:
+    image: nginx:stable
+    restart: always
+    volumes:
+      - ./etc/nginx.conf:/etc/nginx/nginx.conf
+      - ./etc/ssl/:/etc/h0h0h0day/ssl/
+    ports:
+      - 80:80
+      - 443:443
+    depends_on:
+      - ctfd
+
+  db:
+    image: mariadb:10.4
+    restart: always
+    environment:
+      - MYSQL_ROOT_PASSWORD=ctfd
+      - MYSQL_USER=ctfd
+      - MYSQL_PASSWORD=ctfd
+      - MYSQL_DATABASE=ctfd
+    volumes:
+      - .data/mysql:/var/lib/mysql
+    networks:
+        internal:
+    # This command is required to set important mariadb defaults
+    command: [mysqld, --character-set-server=utf8mb4, --collation-server=utf8mb4_unicode_ci, --wait_timeout=28800, --log-warnings=0]
+
+  cache:
+    image: redis:6
+    restart: always
+    volumes:
+    - .data/redis:/data
+    networks:
+        internal:
+
+networks:
+    default:
+    internal:
+        internal: true
