@@ -1,15 +1,15 @@
 resource "digitalocean_droplet" "ctfd" {
   image    = "ubuntu-22-04-x64"
-  name     = "montrehack-h0h0h0day-2024"
+  name     = "h0h0h0day-${var.H0H0_YEAR}-ctfd"
   region   = "tor1"
   ipv6     = true
-  vpc_uuid = digitalocean_vpc.server.id
+  vpc_uuid = digitalocean_vpc.ctfd.id
   # initial size (smallest cpu-optimized)
   size     = "s-2vcpu-4gb"
   # production size
   #size     = "c-16-intel"
   resize_disk = false
-  ssh_keys = [data.digitalocean_ssh_key.server.fingerprint]
+  ssh_keys = [data.digitalocean_ssh_key.ctfd.fingerprint]
 
   connection {
     host = self.ipv4_address
@@ -34,7 +34,7 @@ resource "null_resource" "run-ansible-ctfd" {
     digitalocean_droplet.ctfd
   ]
   provisioner "local-exec" {
-    command = "ANSIBLE_HOST_KEY_CHECKING=False ansible-playbook -i ../lib/ext/terraform.py ansible/server.yml"
+    command = "ANSIBLE_HOST_KEY_CHECKING=False ansible-playbook -i ../lib/ext/terraform.py ansible/ctfd.yml"
   }
   triggers = {
     #always = timestamp()
@@ -58,18 +58,22 @@ resource "ansible_host" "ctfd" {
 variable "DO_SSH_KEY_NAME" {
   type = string
 }
-data "digitalocean_ssh_key" "server" {
+data "digitalocean_ssh_key" "ctfd" {
   name = var.DO_SSH_KEY_NAME
 }
 # SSH keyfile passed as an environment variable
 variable "SSH_KEY_FILE" {
   type = string
 }
+# Event year
+variable "H0H0_YEAR" {
+  type = string
+}
 
 # Section below handle creating a random vpc per droplet instance
 resource "random_pet" "vpc_name" {}
 
-resource "digitalocean_vpc" "server" {
+resource "digitalocean_vpc" "ctfd" {
   name   = "montrehack-h0h0h0-${random_pet.vpc_name.id}"
   region = "tor1"
 }

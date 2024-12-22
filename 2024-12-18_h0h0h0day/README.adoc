@@ -14,7 +14,8 @@ Terraform is deploying resources on Digital Ocean and running Ansible for provis
 Put your secrets in `env.sh`:
 
     export DO_API_TOKEN=<digital ocean api key>
-    export TF_VAR_SSH_KEY_FILE=<full path to private disposable key>
+    export TF_VAR_H0H0_YEAR=<h0h0day year>
+    export TF_VAR_SSH_KEY_FILE=<path to private disposable key>
     export TF_VAR_DO_SSH_KEY_NAME=<name of the ssh key as imported in digital ocean>
 
 Source it:
