@@ -4,10 +4,6 @@
   gather_facts: True
 
   tasks:
-  - name: Perform OS upgrades
-    apt:
-      upgrade: safe
-
   - name: Workaround docker-compose bug with hardware entropy generator https://github.com/docker/compose/issues/6931
     package: name={{ item }} state=latest
     with_items:
