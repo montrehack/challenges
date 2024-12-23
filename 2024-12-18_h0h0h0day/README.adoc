@@ -8,15 +8,12 @@ Terraform is deploying resources on Digital Ocean and running Ansible for provis
 
 * Install https://www.terraform.io[terraform]
 * Install https://docs.ansible.com/ansible/latest/installation_guide/intro_installation.html[Ansible] (>= 2.4)
-* Dynamic inventory script in `../lib/ext/` is: https://github.com/nbering/terraform-inventory/blob/master/terraform.py[terraform.py]
 * Prepare terraform with: `terraform init`
 
 Put your secrets in `env.sh`:
 
     export DO_API_TOKEN=<digital ocean api key>
     export TF_VAR_H0H0_YEAR=<h0h0day year>
-    export TF_VAR_SSH_KEY_FILE=<path to private disposable key>
-    export TF_VAR_DO_SSH_KEY_NAME=<name of the ssh key as imported in digital ocean>
 
 Source it:
 
@@ -24,14 +21,24 @@ Source it:
 
 Webhook config is done via `.env` regular docker-compose.yml secret setup.
 
-=== Do it
+=== Deploy it
 
+Infrastructure via terraform
+
+    cd terraform/
     terraform plan
     terraform apply
+    cd ../
+
+Provision via Ansible
+
+    cd ansible/
+    ansible-playbook -i inventory.yml ctfd
+    cd ../
 
 === Connect
 
-    ansible-ssh -i ../lib/ext/terraform.py ctfd
+    ./ssh.sh <ctfd|challenge>
 
 === Setup
 

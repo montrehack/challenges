@@ -1,3 +1,6 @@
+# Ansible
+ansible/inventory.yml
+
 # Terraform
 .terraform/
 *.tfstate
