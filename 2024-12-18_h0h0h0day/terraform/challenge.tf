@@ -1,9 +1,9 @@
-resource "digitalocean_droplet" "ctfd" {
-  image    = "ubuntu-22-04-x64"
-  name     = "h0h0h0day-${var.H0H0_YEAR}-ctfd"
+resource "digitalocean_droplet" "challenge" {
+  image    = "ubuntu-24-04-x64"
+  name     = "h0h0h0day-${var.H0H0_YEAR}-challenge"
   region   = "tor1"
   ipv6     = true
-  vpc_uuid = digitalocean_vpc.ctfd.id
+  vpc_uuid = digitalocean_vpc.challenge.id
   # initial size (smallest cpu-optimized)
   size     = "s-2vcpu-4gb"
   # production size
@@ -29,9 +29,9 @@ resource "digitalocean_droplet" "ctfd" {
 }
 
 # Section below handle creating a random vpc per droplet instance
-resource "random_pet" "vpc_name_ctfd" {}
+resource "random_pet" "vpc_name_challenge" {}
 
-resource "digitalocean_vpc" "ctfd" {
-  name   = "h0h0h0-${random_pet.vpc_name_ctfd.id}"
+resource "digitalocean_vpc" "challenge" {
+  name   = "h0h0h0-${random_pet.vpc_name_challenge.id}"
   region = "tor1"
 }

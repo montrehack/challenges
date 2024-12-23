@@ -33,7 +33,7 @@ Infrastructure via terraform
 Provision via Ansible
 
     cd ansible/
-    ansible-playbook -i inventory.yml ctfd
+    ansible-playbook -i inventory.yml update-reboot.yml ctfd.yml challenge.yml
     cd ../
 
 === Connect
