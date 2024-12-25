@@ -2,17 +2,20 @@
 
 == Infrastructure
 
-Terraform is deploying resources on Digital Ocean and running Ansible for provisoning.
+Terraform is deploying resources on Digital Ocean and pointing to them via CloudFlare DNS.
+Ansible is for provisoning.
 
 === Setup
 
 * Install https://www.terraform.io[terraform]
 * Install https://docs.ansible.com/ansible/latest/installation_guide/intro_installation.html[Ansible] (>= 2.4)
 * Prepare terraform with: `terraform init`
+* Prepare ansible with: `ansible-galaxy role install nickjj.docker`
 
 Put your secrets in `env.sh`:
 
-    export DO_API_TOKEN=<digital ocean api key>
+    export DIGITALOCEAN_TOKEN=<digital ocean api token>
+    export CLOUDFLARE_API_TOKEN=<cloudflare api token>
     export TF_VAR_H0H0_YEAR=<h0h0day year>
 
 Source it:
@@ -42,7 +45,6 @@ Provision via Ansible
 
 === Setup
 
-* DNS creation and assignment is not automated
 * Lets encrypt is not automated (see comments in ansible file)
 * CTFd must be configured
 

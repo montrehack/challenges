@@ -35,3 +35,22 @@ resource "digitalocean_vpc" "ctfd" {
   name   = "h0h0h0-${random_pet.vpc_name_ctfd.id}"
   region = "tor1"
 }
+
+# DNS
+resource "cloudflare_record" "ctfd_dns_ipv4" {
+  zone_id = data.cloudflare_zone.montrehack.id
+  name    = "h0h0h0day"
+  type    = "A"
+  content = digitalocean_droplet.ctfd.ipv4_address
+  ttl     = 3600
+  proxied = false
+}
+
+resource "cloudflare_record" "ctfd_dns_ipv6" {
+  zone_id = data.cloudflare_zone.montrehack.id
+  name    = "h0h0h0day"
+  type    = "AAAA"
+  content = digitalocean_droplet.ctfd.ipv6_address
+  ttl     = 3600
+  proxied = false
+}

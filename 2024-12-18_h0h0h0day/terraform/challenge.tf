@@ -35,3 +35,22 @@ resource "digitalocean_vpc" "challenge" {
   name   = "h0h0h0-${random_pet.vpc_name_challenge.id}"
   region = "tor1"
 }
+
+# DNS
+resource "cloudflare_record" "challenge_dns_ipv4" {
+  zone_id = data.cloudflare_zone.montrehack.id
+  name    = "challenges"
+  type    = "A"
+  content = digitalocean_droplet.challenge.ipv4_address
+  ttl     = 3600
+  proxied = false
+}
+
+resource "cloudflare_record" "challenge_dns_ipv6" {
+  zone_id = data.cloudflare_zone.montrehack.id
+  name    = "challenges"
+  type    = "AAAA"
+  content = digitalocean_droplet.challenge.ipv6_address
+  ttl     = 3600
+  proxied = false
+}
