@@ -2,11 +2,12 @@ terraform {
   required_providers {
     cloudflare = {
       source  = "cloudflare/cloudflare"
-      version = "~> 4.0"
+      # temporary pin on 4.48 because 4.49 had checksum issues
+      version = "~> 4.48.0"
     }
     digitalocean = {
       source = "digitalocean/digitalocean"
-      version = "~> 2.1.0"
+      version = "~> 2.0"
     }
     null = {
       source = "hashicorp/null"
