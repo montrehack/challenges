@@ -1,0 +1,25 @@
+---
+- hosts: challenge
+  remote_user: root
+  gather_facts: True
+
+  roles:
+  # Install most docker_service dependencies
+  - { role: "nickjj.docker", tags: ["docker"] }
+
+  tasks:
+  - name: Perform OS upgrades
+    apt:
+      upgrade: safe
+
+  - name: Workaround docker-compose bug with hardware entropy generator https://github.com/docker/compose/issues/6931
+    package: name={{ item }} state=latest
+    with_items:
+    - rng-tools
+
+  - name: Create destination directory
+    file:
+      path: "/srv/h0h0h0day"
+      state: directory
+
+  #TODO: synchronize current directory but honor .gitignore or something to avoid leaking secrets
