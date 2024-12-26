@@ -54,10 +54,20 @@ For CTFd
 
 * With a web browser connect to https://h0h0h0day.montrehack.ca/ and setup CTFd
 
+=== Scale up
+
+Instances are small by default. To scale up, in the `terraform/` directory:
+
+    terraform apply -var="size=c-16-intel"
+
+To scale back down:
+
+    terraform apply
 
 === Finish him
 
     terraform destroy
+
 
 == CTFd
 

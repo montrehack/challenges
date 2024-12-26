@@ -4,10 +4,7 @@ resource "digitalocean_droplet" "challenge" {
   region   = "tor1"
   ipv6     = true
   vpc_uuid = digitalocean_vpc.challenge.id
-  # initial size (smallest cpu-optimized)
-  size     = "s-2vcpu-4gb"
-  # production size
-  #size     = "c-16-intel"
+  size     = var.size
   resize_disk = false
   ssh_keys = [digitalocean_ssh_key.do_ssh_key.fingerprint]
 
