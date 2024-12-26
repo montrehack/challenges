@@ -46,11 +46,12 @@ resource "cloudflare_record" "ctfd_dns_ipv4" {
   proxied = false
 }
 
-resource "cloudflare_record" "ctfd_dns_ipv6" {
-  zone_id = data.cloudflare_zone.montrehack.id
-  name    = "h0h0h0day"
-  type    = "AAAA"
-  content = digitalocean_droplet.ctfd.ipv6_address
-  ttl     = 3600
-  proxied = false
-}
+# Disabled due to digitalocean DockerHub issue (see README.adoc)
+#resource "cloudflare_record" "ctfd_dns_ipv6" {
+#  zone_id = data.cloudflare_zone.montrehack.id
+#  name    = "h0h0h0day"
+#  type    = "AAAA"
+#  content = digitalocean_droplet.ctfd.ipv6_address
+#  ttl     = 3600
+#  proxied = false
+#}

@@ -46,11 +46,12 @@ resource "cloudflare_record" "challenge_dns_ipv4" {
   proxied = false
 }
 
-resource "cloudflare_record" "challenge_dns_ipv6" {
-  zone_id = data.cloudflare_zone.montrehack.id
-  name    = "challenges"
-  type    = "AAAA"
-  content = digitalocean_droplet.challenge.ipv6_address
-  ttl     = 3600
-  proxied = false
-}
+# Disabled due to digitalocean DockerHub issue (see README.adoc)
+#resource "cloudflare_record" "challenge_dns_ipv6" {
+#  zone_id = data.cloudflare_zone.montrehack.id
+#  name    = "challenges"
+#  type    = "AAAA"
+#  content = digitalocean_droplet.challenge.ipv6_address
+#  ttl     = 3600
+#  proxied = false
+#}
