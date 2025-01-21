@@ -1,0 +1,15 @@
+# generated from terraform/ansible-inventory.tmpl
+all:
+  hosts:
+    ctfd:
+      ansible_host: ${ctfd_ip}
+      ansible_user: root
+      ansible_ssh_private_key_file: ${infra_sshprivkey}
+      ansible_ssh_common_args: '-o StrictHostKeyChecking=no'
+      ansible_python_interpreter: '/usr/bin/python3'
+    challenge:
+      ansible_host: ${challenge_ip}
+      ansible_user: root
+      ansible_ssh_private_key_file: ${infra_sshprivkey}
+      ansible_ssh_common_args: '-o StrictHostKeyChecking=no'
+      ansible_python_interpreter: '/usr/bin/python3'

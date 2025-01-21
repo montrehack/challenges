@@ -1,0 +1,68 @@
+---
+- hosts: ctfd
+  remote_user: root
+  gather_facts: True
+  vars:
+    project_path: "/srv/h0h0h0day"
+    domain_name: "h0h0h0day.montrehack.ca"
+
+  tasks:
+  - name: Workaround docker-compose bug with hardware entropy generator https://github.com/docker/compose/issues/6931
+    package: name={{ item }} state=latest
+    with_items:
+    - rng-tools
+    - docker
+    - docker-compose
+
+  - name: Create destination directory
+    file:
+      path: "{{ project_path }}"
+      state: directory
+
+  - name: Upload docker-compose files
+    synchronize:
+      src: "../docker-compose.yml"
+      dest: "{{ project_path }}/"
+
+  - name: Upload secrets
+    synchronize:
+      src: "../.env"
+      dest: "{{ project_path }}/"
+
+  - name: Upload configuration files
+    synchronize:
+      src: "../etc"
+      dest: "{{ project_path }}/"
+
+  - name: Upload ctfd Dockerfile
+    synchronize:
+      src: "../ctfd"
+      dest: "{{ project_path }}/"
+
+  # Generate TLS Certificate (Let's Encrypt)
+  - name: Create certificates directory
+    ansible.builtin.file:
+      path: "{{ project_path }}/etc/ssl/"
+      state: directory
+      mode: '0755'
+
+  - name: Install Certbot
+    ansible.builtin.package:
+      name: certbot
+      state: present
+
+  - name: Generate TLS Certificate with Certbot
+    ansible.builtin.command:
+      cmd: certbot certonly --standalone --non-interactive --agree-tos -m {{ lookup('env', 'LETSENCRYPT_EMAIL') }} -d {{ domain_name }}
+    args:
+      creates: "/etc/letsencrypt/live/{{ domain_name }}/fullchain.pem"
+
+  - name: Copy certificates to Docker SSL directory
+    ansible.builtin.copy:
+      src: "/etc/letsencrypt/live/{{ domain_name }}/{{ item }}"
+      dest: "{{ project_path }}/etc/ssl/{{ item }}"
+      remote_src: true
+      mode: preserve
+    loop:
+      - fullchain.pem
+      - privkey.pem
