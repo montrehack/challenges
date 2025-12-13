@@ -1,0 +1,18 @@
+---
+- hosts: challenge
+  gather_facts: True
+
+  tasks:
+  - name: Workaround docker-compose bug with hardware entropy generator https://github.com/docker/compose/issues/6931
+    package: name={{ item }} state=latest
+    with_items:
+    - rng-tools
+
+  - include_tasks: "tasks/install-docker.yml"
+
+  - name: Create destination directory
+    file:
+      path: "/srv/h0h0h0day"
+      state: directory
+
+  # TODO: synchronize current directory but honor .gitignore or something to avoid leaking secrets

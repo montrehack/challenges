@@ -1,0 +1,108 @@
+= README
+
+== Infrastructure
+
+OpenTofu is deploying resources on NorthSec Cloud via Incus and pointing to them via CloudFlare DNS.
+Ansible is for provisoning.
+
+=== Setup
+
+* Install https://www.opentofu.io/intro/getting-started/install/[OpenTofu]
+* Install https://docs.ansible.com/ansible/latest/installation_guide/intro_installation.html[Ansible] (>= 2.4)
+* Prepare tofu with: `tofu init`
+
+Gather your Incus token with:
+
+    incus remote add nsec https://cloud.nsec.io
+    incus remote switch nsec
+    incus list
+
+A token will be available in `/.config/incus/oidctokens/nsec.json`.
+
+Put your secrets in `env.sh`:
+
+    export TF_VAR_H0H0_YEAR=<h0h0day year>
+    export DIGITALOCEAN_TOKEN=<digital ocean api token>
+    export CLOUDFLARE_API_TOKEN=<cloudflare api token>
+    export TF_VAR_CTFD_EXTERNAL_IPV4=<IP>
+    export TF_VAR_CTFD_EXTERNAL_IPV6=<IP>
+    export TF_VAR_CHALLENGE_EXTERNAL_IPV4=<IP>
+    export TF_VAR_CHALLENGE_EXTERNAL_IPV6=<IP>
+    export LETSENCRYPT_EMAIL=<email for letsencrypt>
+    export INCUS_TOKEN=<token>
+
+Source it:
+
+    source env.sh
+
+Webhook config is done via `.env` regular docker-compose.yml secret setup.
+
+=== Deploy it
+
+Infrastructure via OpenTofu
+
+    cd tofu/
+    tofu plan
+    tofu apply
+    cd ../
+
+Provision via Ansible
+
+    cd ansible/
+    ansible-playbook -i inventory.yml update-reboot.yml ctfd.yml challenge.yml
+    cd ../
+
+=== Connect
+
+    ./ssh.sh <ctfd|challenge>
+
+=== Setup
+
+For CTFd
+
+    ./ssh.sh ctfd
+    cd /srv/h0h0h0day/
+    sudo docker-compose up -d
+    sudo docker-compose logs -f
+
+* With a web browser connect to https://h0h0h0day.montrehack.ca/ and setup CTFd
+
+
+=== Finish him
+
+    tofu destroy
+
+
+== CTFd
+
+The Webhook plugin will not trigger if the CTF is not started. An admin cannot
+test the plugin by solving a challenge *before* the CTF is open.
+
+== Helpers
+
+=== Sync only files for CTFd
+
+To resync only files without rerunning the whole ansible playbook:
+
+    cd ansible/
+    ansible-playbook -i inventory.yml ctfd.yml --tags resync-files
+    cd ../
+
+
+== Troubleshooting
+
+=== toomanyrequests: Problems pulling images from DockerHub
+
+This is caused because DigitalOcean uses small networks for IPv6 and DockerHub considers /64 as source networks for IPv6 meaning that our instances are almost always hitting limits for unregistered accounts pulls caused by others.
+
+As of now, we found no Docker specific fix, a quick workaround is to disable IPv6 entirely. Create the file `/etc/sysctl.d/60-ipv6-disable.conf` with:
+
+    net.ipv6.conf.all.disable_ipv6 = 1
+    net.ipv6.conf.default.disable_ipv6 = 1
+    net.ipv6.conf.lo.disable_ipv6 = 1
+
+Reload config with:
+
+    service procps force-reload
+
+Note that because of this workaround, the DNS entries have IPv6 disabled otherwise IPv6 networks don't fallback to IPv4 leading to timeouts because nothing is listening for IPv6.
